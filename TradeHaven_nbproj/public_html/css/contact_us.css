@@ -1,0 +1,32 @@
+/* Filename: contact_us.css
+Author: Marcus Chronabery
+Date: 9/9/18 */
+#contact-message {
+    height: 350px;
+    resize: none;
+}
+
+#subject-label {
+    margin-top: 0px;
+}
+
+label.validation-warning {
+    float: left;
+}
+
+#valid-email-wrapper {
+    float: right;
+}
+
+/* used for all label elements on the contact_us page*/
+label {
+    margin-top: 20px;
+}
+
+#contact-button-wrapper {
+    margin-top: 20px;
+}
+
+#submit-contact {
+    margin-right: 15px; 
+}

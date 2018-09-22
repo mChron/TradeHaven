@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!-- Filename: signup.html
+Author: Marcus Chronabery
+Date: 9/17/18 -->
+<html>
+    <head>
+        <title>Trade Haven - Sign Up</title>
+        <base href="http://localhost:8383/netbeans_project/">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/common.css" rel="stylesheet">
+        <link href="css/signup.css" rel="stylesheet">
+        <link rel="import" href="pages/header.html">
+        <link rel="import" href="pages/footer.html">
+        <link rel="import" href="pages/common_centered_modal.html">
+        <link rel="import" href="pages/login_modal_content.html">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/signup.js"></script>
+        <script src="js/load_nav.js"></script>
+        <script src="js/common.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="signup-jumbotron" class="jumbotron">
+                        <form action="#" method="GET" role="form" id="signup-form" novalidate>
+                            <h2>Sign Up</h2>
+                            <fieldset id="contact-information-fieldset">
+                                <legend id="contact-information-legend">Contact Information</legend>
+                                <div class="container-fluid">
+                                    <div class="row" id="signup-name-row">
+                                        <div class="col-md-4 column">
+                                            <label for="#signup-firstname-input">First Name</label>
+                                            <input class="form-control validatable-required " id="signup-firstname-input" name="first name" />
+                                        </div>
+                                        <div class="col-md-4 column">
+                                            <label for="#signup-lastname-input">Last Name</label>
+                                            <input class="form-control validatable-required " id="signup-lastname-input" name="last name" />
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row" id="signup-email-row">
+                                        <div class="col-md-4 column">
+                                            <label for="#signup-email-input">Email</label>
+                                            <input class="form-control validatable-required " type="email" id="signup-email-input" name="signup email"/>
+                                            <span id="valid-email-wrapper">
+                                                <label id="valid-email-validation-warning" class="validation-warning d-none">* Please Enter A Valid Email</label>
+                                            </span>
+                                        </div>
+                                        <div class="col-md-4 column">
+                                            <label for="#signup-phone-input">Phone Number</label>
+                                            <input class="form-control validatable-required " id="signup-phone-input" name="phone"/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row" id="signup-password-row">
+                                        <div class="col-md-4 column">
+                                            <label for="#signup-password-input">Password</label>
+                                            <input class="form-control validatable-required " type="password" id="signup-password-input" name="signup password"/>
+                                        </div>
+                                        <div class="col-md-4 column">
+                                            <label for="#signup-password-confirm-input">Confirm Password</label>
+                                            <input class="form-control validatable-required " type="password" id="signup-password-confirm-input" name="confirm password"/>
+                                            <span id="pass-match-wrapper">
+                                                <label id="pass-match-validation-warning" class="validation-warning d-none">* Passwords do not match</label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset id="purchase-information-fieldset">
+                                <legend id="purchase-information-legend">Purchase Information</legend>
+                                <div class="container-fluid">
+                                    <h6>Shipping Address</h6>                            
+                                    <div class="row" id="shipping-address-row">
+                                        <div class="col-md-1 column">
+                                            <label for="#signup-shipping-house-input">House/Apt #</label>
+                                            <input class="form-control validatable-required" id="signup-shipping-house-input" name="shipping house"/>
+                                        </div>
+                                        <div class="col-md-2 column">
+                                            <label for="#signup-shipping-street-input">Street</label>
+                                            <input class="form-control validatable-required" id="signup-shipping-street-input" name="shipping street"/>
+                                        </div>
+                                        <div class="col-md-2 column">
+                                            <label for="#signup-shipping-city-input">City</label>
+                                            <input class="form-control validatable-required" id="signup-shipping-city-input" name="shipping city"/>
+                                        </div>
+                                        <div class="col-md-2 column">
+                                            <label for="#signup-shipping-state-select">State</label>
+                                            <select class="form-control validatable-required" id="signup-shipping-state-select" name="shipping state">
+                                                <option class="disabled" disabled selected value="-1">Select Your State</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-1 column">
+                                            <label for="#signup-shipping-zip-input">Zip Code</label>
+                                            <input class="form-control validatable-required" id="signup-shipping-zip-input" name="shipping zip"/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row col-md-12">
+                                        <div class="column">
+                                            <h6>Billing Address</h6>
+                                        </div>
+                                        <div class="column col-md-4">
+                                            <input type="checkbox" id="same-as-shipping-checkbox"/>
+                                            <label for="#same-as-shipping-checkbox">Same As Shipping Address</label>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="billing-address-row">
+                                        <div class="col-md-1 column">
+                                            <label for="#signup-billing-house-input">House/Apt #</label>
+                                            <input class="form-control validatable-required" id="signup-billing-house-input" name="billing house"/>
+                                        </div>
+                                        <div class="col-md-2 column">
+                                            <label for="#signup-billing-street-input">Street</label>
+                                            <input class="form-control validatable-required" id="signup-billing-street-input" name="billing street"/>
+                                        </div>
+                                        <div class="col-md-2 column">
+                                            <label for="#signup-billing-city-input">City</label>
+                                            <input class="form-control validatable-required" id="signup-billing-city-input" name="billing city"/>
+                                        </div>
+                                        <div class="col-md-2 column">
+                                            <label for="#signup-billing-state-select">State</label>
+                                            <select class="form-control validatable-required" id="signup-billing-state-select" name="billing state">
+                                                <option class="disabled" disabled selected value="-1">Select Your State</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-1 column">
+                                            <label for="#signup-billing-zip-input">Zip Code</label>
+                                            <input class="form-control validatable-required" id="signup-billing-zip-input" name="billing zip"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <span id="signup-button-panel">
+                                <button class="btn btn-primary button-custom" type="submit" id="signup-submit">Submit</button>
+                                <button class="btn btn-light button-custom" type="reset" id="signup-reset">Reset</button>
+                            </span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

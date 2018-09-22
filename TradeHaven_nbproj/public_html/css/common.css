@@ -1,0 +1,34 @@
+/* Filename: common.css
+Author: Marcus Chronabery
+Date: 9/9/18 */
+/* used for most form buttons */
+.button-custom {
+    border: solid 1px grey;
+}
+/* used for sign-up link on the login modal */
+#sign-up-link {
+    margin-left: 30px;
+}
+
+/* used for login modal */
+#login-password-label {
+    margin-top: 20px;
+}
+
+#login-links-wrapper {
+    margin-top: 10px;
+}
+
+/* used for various jumbotron elements to extend to full page width */
+#home-jumbotron, #events-jumbotron, #signup-jumbotron, #contact-jumbotron {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+label.validation-warning {
+    margin-top: 0px;
+    margin-bottom: -15px;
+    margin-left: 10px;
+    font-size: x-small;
+    color: #f00;
+}

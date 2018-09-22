@@ -1,0 +1,35 @@
+/* Filename: signup.css
+* Author: Marcus Chronabery
+* Date: 9/9/18 */
+#signup-reset {
+    margin-left: 10px;
+}
+
+fieldset {
+    border: solid 1px black;
+    border-radius: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+#contact-information-legend {
+    width: 15%;
+    margin-left: 10px;
+}
+
+#purchase-information-legend {
+    width: 16%;
+    margin-left: 10px;
+}
+
+#signup-button-panel {
+    margin-top: 10px;
+}
+
+label.validation-warning {
+    float: left;
+}
+
+#valid-email-wrapper, #pass-match-wrapper {
+    float: right;
+}
