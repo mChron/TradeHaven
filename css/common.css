@@ -32,3 +32,7 @@ label.validation-warning {
     font-size: x-small;
     color: #f00;
 }
+
+.clickable {
+    cursor: pointer;
+}
