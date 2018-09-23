@@ -23,15 +23,49 @@ Date: 9/7/18 -->
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div id="events-jumbotron" class="jumbotron">
+                    <div id="sell-jumbotron" class="jumbotron">
                         <h2>Sell Inventory</h2>
-                        <p>
-                            <img src="images/traffic-cone.png" alt="construction" width="30" height="30">
-                            This part of the site is still under construction!
-                            <img src="images/traffic-cone.png" alt="construction" width="30" height="30">
-                            <br />
-                            This page will allow a user to pick cards that they wish to sell to Trade Haven.
-                        </p>
+                        <table id="sell-cards-table" class="table table-bordered table-striped table-hover">
+                            <thead id="sell-table-header">
+                                <tr id="sell-header-row">
+                                    <th id="sell-name-header">Card Name</th>
+                                    <th id="sell-condition-header">Card Condition</th>
+                                    <th id="sell-available-header"># To Sell</th>
+                                    <th id="sell-price-header">Estimated Price/Card</th>
+                                    <th id="btn-column-header"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="sell-table-body">
+                                <tr>
+                                    <td colspan="1">Test name</td>
+                                    <td colspan="1">
+                                        <select class="form-control custom-select">
+                                            <option value="new">New</option>
+                                            <option value="new">Like New</option>
+                                            <option value="new">Used</option>
+                                            <option value="new">Some Damage</option>
+                                        </select>
+                                    </td>
+                                    <td colspan="1">
+                                        <div class="input-group number-spinner">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" data-dir="dwn">
+                                                    <img src="images/glyphicons/glyphicons-434-minus.png" />
+                                                </button>
+                                            </span>
+                                            <input type="text" class="form-control text-center" value="1">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" data-dir="up">
+                                                    <img src="images/glyphicons/glyphicons-433-plus.png" />
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td colspan="1">$0.10</td>
+                                    <td class="btn-column" colspan="1"><img class="clickable" src="images/open-chest.png" height="30" width="30" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

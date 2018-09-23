@@ -20,7 +20,7 @@ Date: 9/9/18 */
 }
 
 /* used for various jumbotron elements to extend to full page width */
-#home-jumbotron, #events-jumbotron, #signup-jumbotron, #contact-jumbotron {
+.jumbotron {
     margin-left: -15px;
     margin-right: -15px;
 }
@@ -35,4 +35,40 @@ label.validation-warning {
 
 .clickable {
     cursor: pointer;
+}
+
+/*Handheld devices require a larger top margin*/
+@media (min-width: 576px), (max-width:576px) {
+    .jumbotron {
+        margin-top: 30px;
+        padding: 2rem 1rem;
+    }
+    
+    #browse-jumbotron {
+        margin-right: -100px;
+    }
+    
+    #sell-jumbotron {
+        margin-right: -20px;
+    }
+}
+
+/*Devices between 361px and 376px in width, e.g. iphone 6/7/8/X*/
+@media (max-width: 376px) and (min-width: 361px) {
+    #home-jumbotron, #events-jumbotron, #signup-jumbotron, #contact-jumbotron, #dice-roller-jumbotron, #sell-jumbotron {
+        margin-right: -55px;  
+    }
+}
+
+/*Devices <= 360px in width, e.g. galaxy s5, iphone 5/SE*/
+@media (max-width: 360px) {
+    #home-jumbotron, #events-jumbotron, #sell-jumbotron {
+        margin-right: -70px;   
+    }
+}
+
+@media (max-width: 320px) {
+    #home-jumbotron, #events-jumbotron, #signup-jumbotron, #contact-jumbotron, #dice-roller-jumbotron, #sell-jumbotron {
+        margin-right: -110px;   
+    }
 }

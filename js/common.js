@@ -5,6 +5,7 @@ Date: 9/17/18 */
 $(function() {
     $("#login-form").submit(validateLoginForm);
     initializeValidatables();
+    $(".number-spinner button").click(updateNumberSpinnerValue($(this)));
 });
 
 /*
@@ -96,4 +97,19 @@ function titleCaseMulti(s) {
         final += this + " ";
     });
     return final.substring(0, final.length - 1);
+}
+
+function updateNumberSpinnerValue(btn) {
+    var oldValue = $(btn).closest(".number-spinner").find("input").val().trim();
+    var newVal = 0;
+    if ($(btn).attr("data-dir") === "up") {
+        newVal = parseInt(oldValue) + 1;
+    } 
+    else if (oldValue > 1) {
+        newVal = parseInt(oldValue) - 1;
+    } 
+    else {
+        newVal = 1;
+    }
+    $(btn).closest(".number-spinner").find("input").val(newVal);
 }
