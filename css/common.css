@@ -43,20 +43,16 @@ label.validation-warning {
         margin-top: 30px;
         padding: 2rem 1rem;
     }
-    
-    #browse-jumbotron {
-        margin-right: -55px;
-    }
-    
-    #sell-jumbotron {
-        margin-right: -20px;
-    }
 }
 
 /*Devices between 361px and 376px in width, e.g. iphone 6/7/8/X*/
 @media (max-width: 376px) and (min-width: 361px) {
     #home-jumbotron, #events-jumbotron, #signup-jumbotron, #contact-jumbotron, #dice-roller-jumbotron, #sell-jumbotron {
         margin-right: -55px;  
+    }
+    
+    #browse-jumbotron {
+        margin-right: -95px;
     }
 }
 
@@ -65,10 +61,18 @@ label.validation-warning {
     #home-jumbotron, #events-jumbotron, #sell-jumbotron {
         margin-right: -70px;   
     }
+    
+    #browse-jumbotron {
+        margin-right: -110px;
+    }
 }
 
 @media (max-width: 320px) {
     #home-jumbotron, #events-jumbotron, #signup-jumbotron, #contact-jumbotron, #dice-roller-jumbotron, #sell-jumbotron {
         margin-right: -110px;   
+    }
+    
+    #browse-jumbotron {
+        margin-right: -135px;
     }
 }
