@@ -49,7 +49,7 @@ function modifyBillingAddress(checked) {
 function loadStates() {
     $.ajax({
         dataType:"json",
-        url: "/netbeans_project/dictionaries/states.json",
+        url: "dictionaries/states.json",
         success: function(data) {
             $(data).each(function(key, value) {
                 var opt = document.createElement("option");
