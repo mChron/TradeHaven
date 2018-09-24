@@ -11,7 +11,6 @@ $(function() {
         loadHeaderAndFooterAjax();
         loadCommonModalAjax("Login", "Login", "pages/login_modal_content.html");
     }
-    loadCopyrightYear();
 });
 
 /*
@@ -38,6 +37,7 @@ function loadHeaderAndFooter() {
         document.body.appendChild(htmlMessage.cloneNode(true));
     });
     setActiveNavLink();
+    loadCopyrightYear();
 }
 
 /*Load header and footer via ajax*/
@@ -48,6 +48,7 @@ function loadHeaderAndFooterAjax() {
         success: function(data) {
             var head = $(data)[3];
             $(document.body).append($(head).clone());
+            setActiveNavLink();
         }
     });
     $.ajax({
@@ -56,9 +57,9 @@ function loadHeaderAndFooterAjax() {
         success: function(data) {
             var foot = $(data)[3];
             $(document.body).append($(foot).clone());
+            loadCopyrightYear();
         }
     });
-    setActiveNavLink();
 }
 
 /*Set the current page link to 'active' in the navigation bar*/
