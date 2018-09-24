@@ -2,9 +2,12 @@
 Author: Marcus Chronabery
 Date: 9/8/18 */
 $(function() {
-    loadHeaderAndFooter();
-    loadCommonModal("Login", "Login", $("link[rel='import'][href='pages/login_modal_content.html']")[0].import.querySelector('div'));
-    loadCopyrightYear();
+    var isChrome = !!window.chrome && !!window.chrome.webstore;
+    if (isChrome) {
+        loadHeaderAndFooter();
+        loadCommonModal("Login", "Login", $("link[rel='import'][href='pages/login_modal_content.html']")[0].import.querySelector('div'));
+        loadCopyrightYear();
+    }
 });
 
 /*
