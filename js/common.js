@@ -5,7 +5,9 @@ Date: 9/17/18 */
 $(function() {
     $("#login-form").submit(validateLoginForm);
     initializeValidatables();
-    $(".number-spinner button").click(updateNumberSpinnerValue($(this)));
+    $(".number-spinner button").click(function(e) {
+        updateNumberSpinnerValue($(this));
+    });
 });
 
 /*
@@ -103,8 +105,13 @@ function updateNumberSpinnerValue(btn) {
     var oldValue = $(btn).closest(".number-spinner").find("input").val().trim();
     var newVal = 0;
     if ($(btn).attr("data-dir") === "up") {
-        newVal = parseInt(oldValue) + 1;
-    } 
+        if (oldValue >= 10) {
+            newVal = 10;
+        }
+        else {
+            newVal = parseInt(oldValue) + 1;
+        }
+    }
     else if (oldValue > 1) {
         newVal = parseInt(oldValue) - 1;
     } 
