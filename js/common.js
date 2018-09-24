@@ -8,6 +8,11 @@ $(function() {
     $(".number-spinner button").click(function(e) {
         updateNumberSpinnerValue($(this));
     });
+    $(".number-spinner").on("keypress", function(e) {
+        if (e.keyCode < 48 || e.keyCode > 57) {
+            e.preventDefault();
+        }
+    });
 });
 
 /*
