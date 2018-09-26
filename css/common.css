@@ -43,6 +43,10 @@ label.validation-warning {
         margin-top: 30px;
         padding: 2rem 1rem;
     }
+    
+    #footer * {
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 411px) and (min-width: 377px) {
@@ -79,5 +83,9 @@ label.validation-warning {
     
     #browse-jumbotron {
         margin-right: -135px;
+    }
+    
+    #footer * {
+        font-size: 12px;
     }
 }
