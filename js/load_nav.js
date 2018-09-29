@@ -66,10 +66,19 @@ function loadHeaderAndFooterAjax() {
 function setActiveNavLink() {
     // get the current url and set the appropriate nav-link as active
     var url = document.location.href;
-    var last = url.lastIndexOf("/");
-    last = url.substring(last+1);
-    $(".nav-link[href='" + last + "']").addClass("active");
-    $(".nav-link[href='pages/" + last + "']").addClass("active");
+    var link = url.substring(url.lastIndexOf("/") + 1);
+    $(".nav-link")
+    .filter(function() {
+        return this.href.match(link);
+    })
+    .addClass("active");
+    $(".dropdown-item")
+    .filter(function() {
+        return this.href.match(link);
+    })
+    .addClass("active")
+    .parents(0)
+    .addClass("active");
 }
 
 /*Load common modal with content from the provided url via ajax */
