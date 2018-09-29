@@ -8,7 +8,19 @@ $(function() {
     $(".number-spinner button").click(function(e) {
         updateNumberSpinnerValue($(this));
     });
-    $(".number-spinner").on("keypress", function(e) {
+    $(".number-spinner input").on("paste", function(e) {
+        $(this).change();
+    });
+    $(".number-spinner input").on("change", function(e) {
+        var parsed = parseInt($(this).val());
+        if (!isNaN(parsed)) {
+            $(this).val(parsed);
+        }
+        else {
+            $(this).val(1);
+        }
+    });
+    $(".number-spinner input").on("keypress", function(e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
             e.preventDefault();
         }
