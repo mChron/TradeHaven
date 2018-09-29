@@ -1,11 +1,12 @@
 /* Filename: common.js
 Author: Marcus Chronabery
 Date: 9/17/18 */
+var numSpinner;
 
 $(function() {
     $("#login-form").submit(validateLoginForm);
     initializeValidatables();
-    $(".number-spinner button").click(function(e) {
+    $(".number-spinner button").on("click", function(e) {
         updateNumberSpinnerValue($(this));
     });
     $(".number-spinner input").on("paste", function(e) {
@@ -25,7 +26,13 @@ $(function() {
             e.preventDefault();
         }
     });
+    initializeNumSpinner();
+    $(".remove-row").click(removeRow);
 });
+
+function removeRow() {
+    $(this).parents("tr").remove();
+}
 
 /*
  * Validate the fields in the login form.
@@ -68,7 +75,7 @@ function initializeValidatables() {
         var text = "* " + titleCase(fieldName) + " Required";
         fieldName = fieldName.replace(/ /g, "-");
         var element = document.createElement("label");
-        element.id = fieldName + "-validation-warning";
+        $(element).prop("id", fieldName + "-validation-warning");
         $(element).addClass("validation-warning d-none");
         $(element).html(text);
         var parent = $(this).parents()[0];
@@ -136,4 +143,68 @@ function updateNumberSpinnerValue(btn) {
         newVal = 1;
     }
     $(btn).closest(".number-spinner").find("input").val(newVal);
+}
+
+function initializeNumSpinner() {
+    numSpinner = document.createElement("div");
+    $(numSpinner).addClass("input-group number-spinner");
+    
+    var subtract = document.createElement("span");
+    $(subtract).addClass("input-group-btn");
+    $(numSpinner).append(subtract);
+    
+    var subBtn = document.createElement("button");
+    $(subBtn).addClass("btn btn-default");
+    $(subBtn).attr("data-dir", "dwn");
+    $(subtract).append(subBtn);
+    $(subBtn).click(function() {
+        updateNumberSpinnerValue($(this));
+    });
+    
+    var subImg = document.createElement("img");
+    $(subImg).prop("src", "images/glyphicons/glyphicons-434-minus.png");
+    $(subBtn).append(subImg);
+    
+    var input = document.createElement("input");
+    $(input).prop("type", "text");
+    $(input).addClass("form-control text-center");
+    $(input).val(1);
+    $(numSpinner).append(input);
+    $(input).on("paste", function(e) {
+        $(this).change();
+    })
+    .on("change", function(e) {
+        var parsed = parseInt($(this).val());
+        if (!isNaN(parsed)) {
+            $(this).val(parsed);
+        }
+        else {
+            $(this).val(1);
+        }
+    })
+    .on("keypress", function(e) {
+        if (e.keyCode < 48 || e.keyCode > 57) {
+            e.preventDefault();
+        }
+    });
+    
+    var add = document.createElement("span");
+    $(add).addClass("input-group-btn");
+    $(numSpinner).append(add);
+    
+    var addBtn = document.createElement("button");
+    $(addBtn).addClass("btn btn-default");
+    $(addBtn).attr("data-dir", "up");
+    $(add).append(addBtn);
+    $(addBtn).click(function() {
+        updateNumberSpinnerValue($(this));
+    });
+    
+    var addImg = document.createElement("img");
+    $(addImg).prop("src", "images/glyphicons/glyphicons-433-plus.png");
+    $(addBtn).append(addImg);
+}
+
+function getNewNumberSpinner() {
+    return $(numSpinner).clone(true);
 }

@@ -10,6 +10,7 @@ Date: 9/7/18 -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/common.css" rel="stylesheet">
+        <link href="css/sell.css" rel="stylesheet">
         <link rel="import" href="pages/common/header.html">
         <link rel="import" href="pages/common/footer.html">
         <link rel="import" href="pages/common/common_centered_modal.html">
@@ -18,6 +19,7 @@ Date: 9/7/18 -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/load_nav.js"></script>
         <script src="js/common.js"></script>
+        <script src="js/sell.js"></script>
     </head>
     <body>
         <div class="container-fluid">
@@ -37,7 +39,7 @@ Date: 9/7/18 -->
                             </thead>
                             <tbody id="sell-table-body">
                                 <tr>
-                                    <td colspan="1">Test name</td>
+                                    <td colspan="1">Test Card 1</td>
                                     <td colspan="1">
                                         <select class="form-control custom-select">
                                             <option value="new">New</option>
@@ -61,11 +63,19 @@ Date: 9/7/18 -->
                                             </span>
                                         </div>
                                     </td>
-                                    <td colspan="1">$0.10</td>
-                                    <td class="btn-column" colspan="1"><img class="clickable" src="images/glyphicons/glyphicons-198-remove-circle.png" height="30" width="30" /></td>
+                                    <td colspan="1">$0.02</td>
+                                    <td class="btn-column" colspan="1"><img class="clickable remove-row" src="images/glyphicons/glyphicons-198-remove-circle.png" height="30" width="30" /></td>
                                 </tr>
                             </tbody>
                         </table>
+                        <button id="add-sell-card" class="btn btn-default">
+                            <img src="images/stack.png" height="40" width="40" />
+                            <span>Add Additional Cards</span>
+                        </button>
+                        <button id="remove-all-cards" class="btn btn-default">
+                            <img height="40" width="40" src="images/card-burn.png" />
+                            <span>Remove All Cards</span>
+                        </button>
                     </div>
                 </div>
             </div>
