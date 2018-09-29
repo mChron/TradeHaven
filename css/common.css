@@ -50,38 +50,39 @@ label.validation-warning {
 }
 
 @media (max-width: 411px) and (min-width: 377px) {
-    #browse-jumbotron {
+    #browse-jumbotron, #sell-jumbotron {
         margin-right: -80px;
+    }
 }
 
 /*Devices between 361px and 376px in width, e.g. iphone 6/7/8/X*/
 @media (max-width: 376px) and (min-width: 361px) {
-    #home-jumbotron, #events-jumbotron, #signup-jumbotron, #contact-jumbotron, #dice-roller-jumbotron, #sell-jumbotron {
+    #home-jumbotron, #events-jumbotron, #signup-jumbotron, #contact-jumbotron, #dice-roller-jumbotron {
         margin-right: -55px;  
     }
     
-    #browse-jumbotron {
+    #browse-jumbotron, #sell-jumbotron {
         margin-right: -95px;
     }
 }
 
 /*Devices <= 360px in width, e.g. galaxy s5, iphone 5/SE*/
 @media (max-width: 360px) {
-    #home-jumbotron, #events-jumbotron, #sell-jumbotron {
+    #home-jumbotron, #events-jumbotron {
         margin-right: -70px;   
     }
     
-    #browse-jumbotron {
+    #browse-jumbotron, #sell-jumbotron {
         margin-right: -110px;
     }
 }
 
 @media (max-width: 320px) {
-    #home-jumbotron, #events-jumbotron, #signup-jumbotron, #contact-jumbotron, #dice-roller-jumbotron, #sell-jumbotron {
+    #home-jumbotron, #events-jumbotron, #signup-jumbotron, #contact-jumbotron, #dice-roller-jumbotron {
         margin-right: -110px;   
     }
     
-    #browse-jumbotron {
+    #browse-jumbotron, #sell-jumbotron {
         margin-right: -135px;
     }
 }
