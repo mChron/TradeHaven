@@ -5,11 +5,11 @@ $(function() {
     var isChrome = !!window.chrome && !!window.chrome.webstore;
     if (isChrome) {
         loadHeaderAndFooter();
-        loadCommonModal("Login", "Login", $("link[rel='import'][href='pages/login_modal_content.html']")[0].import.querySelector('div'));
+        loadCommonModal("Login", "Login", $("link[rel='import'][href='pages/user/login_modal_content.html']")[0].import.querySelector('div'));
     }
     else {
         loadHeaderAndFooterAjax();
-        loadCommonModalAjax("Login", "Login", "pages/login_modal_content.html");
+        loadCommonModalAjax("Login", "Login", "pages/user/login_modal_content.html");
     }
 });
 
@@ -44,7 +44,7 @@ function loadHeaderAndFooter() {
 function loadHeaderAndFooterAjax() {
     $.ajax({
         dataType:"html",
-        url: "pages/header.html",
+        url: "pages/common/header.html",
         success: function(data) {
             var head = $(data)[3];
             $(document.body).append($(head).clone());
@@ -53,7 +53,7 @@ function loadHeaderAndFooterAjax() {
     });
     $.ajax({
         dataType:"html",
-        url: "pages/footer.html",
+        url: "pages/common/footer.html",
         success: function(data) {
             var foot = $(data)[3];
             $(document.body).append($(foot).clone());
