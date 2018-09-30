@@ -208,3 +208,10 @@ function initializeNumSpinner() {
 function getNewNumberSpinner() {
     return $(numSpinner).clone(true);
 }
+
+function addTooltipProperties(obj, dir, title) {
+    $(obj).attr("data-toggle", "tooltip");
+    $(obj).attr("data-placement", dir);
+    $(obj).attr("title", title);
+    $(obj).tooltip();
+}

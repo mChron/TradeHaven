@@ -27,6 +27,13 @@ function addNewRow(index) {
     var tr = document.createElement("tr");
     var name = document.createElement("td");
     $(name).html("Test Card " + index);
+    var editImg = document.createElement("img");
+    $(editImg).prop("src", "images/glyphicons/glyphicons-31-pencil.png");
+    $(editImg).addClass("clickable edit-sell-card");
+    $(editImg).prop("height", 30);
+    $(editImg).prop("width", 30);
+    addTooltipProperties(editImg, "top", "Change Card");
+    $(name).append(editImg);
     $(tr).append(name);
     var condition = $(conditionSelect).clone();
     $(tr).append(condition);
@@ -44,6 +51,7 @@ function addNewRow(index) {
     $(removeImg).prop("height", 30);
     $(removeImg).prop("width", 30);
     $(removeBtn).append(removeImg);
+    addTooltipProperties(removeImg, "left", "Remove Card");
     $(tr).append(removeBtn);
     $("#sell-table-body").append(tr);
 }
