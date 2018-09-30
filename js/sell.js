@@ -17,6 +17,10 @@ $(function() {
         $("#sell-table-body").children("tr").remove();
     });
     initializeConditionSelect();
+    $("[data-toggle='tooltip']").tooltip();
+    $("button[data-toggle='tooltip']").click(function() {
+        $(this).tooltip("hide");
+    });
 });
 
 function addNewRow(index) {

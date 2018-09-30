@@ -6,3 +6,11 @@
 #sell-header-row {
     border-bottom: solid 3px #CCCCCC;
 }
+
+#sell-name-header, #sell-condition-header, #sell-available-header, #sell-price-header {
+    width: 20%;
+}
+
+#btn-column-header {
+    width: 5%;
+}

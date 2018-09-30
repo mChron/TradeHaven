@@ -16,6 +16,7 @@ Date: 9/7/18 -->
         <link rel="import" href="pages/common/common_centered_modal.html">
         <link rel="import" href="pages/user/login_modal_content.html">
         <script src="js/jquery.min.js"></script>
+        <script src="js/popper.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/load_nav.js"></script>
         <script src="js/common.js"></script>
@@ -30,17 +31,17 @@ Date: 9/7/18 -->
                         <table id="sell-cards-table" class="table table-bordered table-striped table-hover">
                             <thead id="sell-table-header">
                                 <tr id="sell-header-row">
-                                    <th id="sell-name-header">Card Name</th>
-                                    <th id="sell-condition-header">Card Condition</th>
-                                    <th id="sell-available-header"># To Sell</th>
-                                    <th id="sell-price-header">Estimated Price/Card</th>
-                                    <th id="btn-column-header"></th>
+                                    <th id="sell-name-header" >Card Name</th>
+                                    <th id="sell-condition-header" >Card Condition</th>
+                                    <th id="sell-available-header" ># To Sell</th>
+                                    <th id="sell-price-header" >Estimated Price/Card</th>
+                                    <th id="btn-column-header" ></th>
                                 </tr>
                             </thead>
                             <tbody id="sell-table-body">
                                 <tr>
-                                    <td colspan="1">Test Card 1</td>
-                                    <td colspan="1">
+                                    <td>Test Card 1</td>
+                                    <td>
                                         <select class="form-control custom-select">
                                             <option value="new">New</option>
                                             <option value="new">Like New</option>
@@ -48,7 +49,7 @@ Date: 9/7/18 -->
                                             <option value="new">Some Damage</option>
                                         </select>
                                     </td>
-                                    <td colspan="1">
+                                    <td>
                                         <div class="input-group number-spinner">
                                             <span class="input-group-btn">
                                                 <button class="btn btn-default" data-dir="dwn">
@@ -63,19 +64,25 @@ Date: 9/7/18 -->
                                             </span>
                                         </div>
                                     </td>
-                                    <td colspan="1">$0.02</td>
-                                    <td class="btn-column" colspan="1"><img class="clickable remove-row" src="images/glyphicons/glyphicons-198-remove-circle.png" height="30" width="30" /></td>
+                                    <td>$0.02</td>
+                                    <td class="btn-column"><img class="clickable remove-row" src="images/glyphicons/glyphicons-198-remove-circle.png" height="30" width="30" /></td>
                                 </tr>
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4">                      
+                                        <button id="add-sell-card" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add Cards">
+                                            <img src="images/stack.png" height="40" width="40" />
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button id="remove-all-cards" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Remove All">
+                                            <img height="40" width="40" src="images/card-burn.png" />
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tfoot>
                         </table>
-                        <button id="add-sell-card" class="btn btn-default">
-                            <img src="images/stack.png" height="40" width="40" />
-                            <span>Add Additional Cards</span>
-                        </button>
-                        <button id="remove-all-cards" class="btn btn-default">
-                            <img height="40" width="40" src="images/card-burn.png" />
-                            <span>Remove All Cards</span>
-                        </button>
                     </div>
                 </div>
             </div>
