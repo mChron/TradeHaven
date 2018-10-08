@@ -6,6 +6,7 @@ var numSpinner;
 $(function() {
     $("#login-form").submit(validateLoginForm);
     initializeValidatables();
+    initializeDatePickers();
     $(".number-spinner button").on("click", function(e) {
         updateNumberSpinnerValue($(this));
     });
@@ -39,8 +40,8 @@ function removeRow() {
  */
 function validateLoginForm(e) {
     e.preventDefault();
-    toggleWarning("#email", !$("#login-email").val());
-    toggleWarning("#password", !$("#login-pass").val());
+    toggleWarning("#login-email", !$("#login-email").val());
+    toggleWarning("#login-password", !$("#login-pass").val());
 }
 
 /*
@@ -70,22 +71,43 @@ function toggleWarningById(id, truth) {
  * The toggling of the element is still up to the individual page and validation. 
  */
 function initializeValidatables() {
-    $(".validatable-required").each(function() {
-        var fieldName = this.name.toLowerCase();
-        var text = "* " + titleCase(fieldName) + " Required";
-        fieldName = fieldName.replace(/ /g, "-");
-        var element = document.createElement("label");
-        $(element).prop("id", fieldName + "-validation-warning");
-        $(element).addClass("validation-warning d-none");
-        $(element).html(text);
-        var parent = $(this).parents()[0];
-        if ($(this).hasClass("validatable-after-parent")) {
-            $(parent).after(element);
-        }
-        else {
-            $(parent).append(element);
-        }
+    $(".validatable-required").each(initValidatable);
+}
+
+function initializeDatePickers() {
+    $(".input-group.date").each(initDatePicker);
+}
+
+function initDatePicker(indx, val) {
+    $(val).datepicker({
+        startDate: "today",
+        maxViewMode: 2,
+        orientation: "bottom auto",
+        multidate: false,
+        daysOfWeekHighlighted: "0,6",
+        autoclose: true,
+        todayHighlight: true
+    }).on("show", function(e) {
+        $(".datepicker").find("table").removeClass("table-condensed").addClass("table table-sm");
     });
+}
+
+function initValidatable(indx, val) {
+//    console.log(val);
+    var fieldName = $(val).attr("title").toLowerCase();
+    var text = "* " + titleCase(fieldName) + " Required";
+    fieldName = fieldName.replace(/ /g, "-");
+    var element = document.createElement("label");
+    $(element).prop("id", fieldName + "-validation-warning");
+    $(element).addClass("validation-warning d-none");
+    $(element).html(text);
+    var parent = $(this).parents()[0];
+    if ($(this).hasClass("validatable-after-parent")) {
+        $(parent).after(element);
+    }
+    else {
+        $(parent).append(element);
+    }
 }
 
 function titleCase(s) {

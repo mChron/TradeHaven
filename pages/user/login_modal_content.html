@@ -6,14 +6,14 @@ Date: 9/7/18 -->
     <div class="alert alert-danger d-none">
         Invalid Email or Password!
     </div>
-    <form id="login-form" action="#" method="POST">
+    <form id="login-form" action="#" method="GET">
         <div class="row" id="login-email-wrapper">
             <label id="login-email-label">Email</label>
-            <input id="login-email" type="email" class="form-control validatable-required" placeholder="example@yahoo.com" name="email"/>
+            <input id="login-email" type="email" class="form-control validatable-required" title="Login Email" placeholder="example@yahoo.com" name="log-email"/>
         </div>
         <div class="row" id="login-pass-wrapper">
             <label id="login-password-label">Password</label>
-            <input id="login-pass" type="password" class="form-control validatable-required" name="password"/>
+            <input id="login-pass" type="password" class="form-control validatable-required" title="Login Password" name="log-password"/>
         </div>
         <div class="row" id="login-links-wrapper">
             <a id="forgot-password-link" href="pages/user/forgot_password.html">Forgot Password</a>

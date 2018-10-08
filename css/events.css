@@ -1,0 +1,51 @@
+/*
+* filename: events.css,
+* author: Marcus Chronabery
+* date: 10/08/18
+*/
+.datepicker {
+    width: 250px;
+    margin-bottom: 50px;
+}
+
+#event-privacy-btn.active {
+    background-color: #0069D0;
+}
+
+#events-button-wrapper {
+    margin-left: 0px;
+    margin-top: 15px;
+}
+
+#cancel-event {
+    margin-left: 15px;
+}
+
+#event-privacy-btn {
+    background-color: #007bff;
+}
+
+form .row {
+    margin-top: 20px;
+}
+
+#name-and-privacy-row {
+    margin-top: 0px;
+}
+
+fieldset {
+    border: solid 1px black;
+    border-radius: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+#event-details-legend {
+    width: 136px;
+    margin-left: 10px;
+}
+
+#event-description {
+    height: 350px;
+    resize: none;
+}

@@ -3,7 +3,7 @@ Author: Marcus Chronabery
 Date: 9/17/18 */
 $(function() {
     $("#contact-form").submit(validateContactForm);
-    loadCommonModalAjax("Contact", "Close", "pages/business/contact_feedback_modal_content.html");
+    loadCommonModalAjax("Contact", "Close", "pages/business/contact_feedback_modal_content.html", function(){});
 });
 
 /*
@@ -17,12 +17,12 @@ function validateContactForm(e) {
     toggleWarning("#message", !$("#contact-message").val());
     toggleWarning("#message-length", $("#contact-message").val().length < 250);
     toggleWarning("#name", !$("#contact-name").val());
-    toggleWarning("#email", !$("#contact-email").val());
-    toggleWarning("#valid-email", !reg.test($("#contact-email").val()));
+    toggleWarning("#contact-email", !$("#contact-email").val());
+    toggleWarning("#contact-valid-email", !reg.test($("#contact-email").val()));
     if ($("#contact-form .validation-warning:visible")[0] === undefined) {
         $("#contact-form")[0].reset();
         $("#contact-modal").modal();
-        $("#contact-modal .btn-light").hide();
+        $("#contact-modal .modal-footer button").hide();
 //        $(this).unbind("submit").submit();
     }
 }

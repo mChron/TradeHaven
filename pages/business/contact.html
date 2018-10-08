@@ -34,13 +34,13 @@ Date: 9/7/18 -->
                             <div id="subject-wrapper" class="row col-md-6">
                                 <label for="contact-subject" id="subject-label">Subject</label>
                                 <div class="input-group">
-                                    <input id="contact-subject" class="form-control col-md-8 validatable-required validatable-after-parent" name="subject" required/>
+                                    <input id="contact-subject" class="form-control col-md-8 validatable-required validatable-after-parent" title="Subject" name="contact-subject" required/>
                                 </div>
                             </div>
                             <div id="message-wrapper" class="row col-md-12">
                                 <label for="contact-content" id="content-label">Message</label>
                                 <div class="input-group">
-                                    <textarea id="contact-message" class="form-control validatable-required validatable-after-parent" name="message" required></textarea>
+                                    <textarea id="contact-message" class="form-control validatable-required validatable-after-parent" title="Message" name="contact-message" required></textarea>
                                 </div>
                                 <label id="message-length-validation-warning" class="validation-warning d-none">* Please Provide At Least 250 Characters</label>
                             </div>
@@ -48,16 +48,16 @@ Date: 9/7/18 -->
                                 <div id="contact-name-wrapper" class="col-md-6">
                                     <label for="contact-name" id="name-label">Name</label>
                                     <div class="input-group">
-                                        <input class="form-control col-md-8 validatable-required validatable-after-parent" id="contact-name" name="name" required/>
+                                        <input class="form-control col-md-8 validatable-required validatable-after-parent" id="contact-name" title="Name" name="contact-name" required/>
                                     </div>
                                 </div>
                                 <div id="contact-email-wrapper" class="col-md-4">
                                     <label for="contact-email" id="email-label">Email</label>
                                     <div class="input-group">
-                                        <input class="form-control col-md-12 validatable-required validatable-after-parent" id="contact-email" type="email" name="email" placeholder="example@somewhere.com" required/>
+                                        <input class="form-control col-md-12 validatable-required validatable-after-parent" id="contact-email" type="email" title="Contact Email" name="contact-email" placeholder="example@somewhere.com" required/>
                                     </div>
                                     <span id="valid-email-wrapper">
-                                        <label id="valid-email-validation-warning" class="validation-warning d-none">* Please Enter A Valid Email</label>
+                                        <label id="contact-valid-email-validation-warning" class="validation-warning d-none">* Please Enter A Valid Email</label>
                                     </span>
                                 </div>
                             </div>

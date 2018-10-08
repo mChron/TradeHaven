@@ -89,4 +89,8 @@ function validateSignupForm(e) {
         toggleWarning("#billing-state", !$("#signup-billing-state-select").val());
         toggleWarning("#billing-zip", !$("#signup-billing-zip-input").val());
     }
+    if ($(".validation-warning:visible").length === 0) {
+        $("#signup-form").off("submit");
+        $("#signup-form").submit();
+    }
 }

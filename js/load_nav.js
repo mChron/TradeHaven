@@ -3,7 +3,12 @@ Author: Marcus Chronabery
 Date: 9/8/18 */
 $(function() {
     loadHeaderAndFooterAjax();
-    loadCommonModalAjax("Login", "Login", "pages/user/login_modal_content.html");
+    loadCommonModalAjax("Login", "Login", "pages/user/login_modal_content.html", function() {
+        $("#login-form").submit(validateLoginForm);
+        $($("#login-modal button[type='submit']")).click(function() {
+            $("#login-form").submit();
+        });
+    });
 });
 
 /*
@@ -57,7 +62,7 @@ function setActiveNavLink() {
 }
 
 /*Load common modal with content from the provided url via ajax */
-function loadCommonModalAjax(modalTitle, mainBtnText, url) {
+function loadCommonModalAjax(modalTitle, mainBtnText, url, postSuccess) {
     $.ajax({
         dataType:"html",
         url: "pages/common/common_centered_modal.html",
@@ -71,7 +76,8 @@ function loadCommonModalAjax(modalTitle, mainBtnText, url) {
                     var modal = $(content);
 
                     // set modal element ids to reflect which modal they belong to
-                    modal.prop("id", prefix + "modal");
+                    var modalId = prefix + "modal";
+                    modal.prop("id", modalId);
                     $(modal).find(".modal-content").prop("id", prefix + "modal-content");
                     $(modal).find(".modal-body").prop("id", prefix + "modal-body");
                     $(modal).find("#" + prefix + "modal-body").html($(data)[3]);
@@ -82,11 +88,12 @@ function loadCommonModalAjax(modalTitle, mainBtnText, url) {
                     var modalSubmitBtn = $(modal).find(".modal-footer button.btn-primary");
                     $(modalSubmitBtn).html(mainBtnText);
                     $(modalSubmitBtn).prop("id", prefix + "submit");
-                    $(modalSubmitBtn).click(function() {
-                        $("#login-form").submit();
-                    });
                     $(document.body).append($(content).clone());
                     $(".modal").addClass("show");
+                    $("#" + modalId).find(".validatable-required").each(initValidatable);
+                    if (postSuccess !== undefined) {
+                        postSuccess();
+                    }
                 }
             });
         }
