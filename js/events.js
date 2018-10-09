@@ -5,11 +5,11 @@
  */
 $(function() {
    $("#event-privacy-btn").click(function() {
-       if ($(this).html() === "Private") {
-           $(this).html("Not Private");
+       if ($(this).html() === "Private (Invite Only)") {
+           $(this).html("Public");
        }
        else {
-           $(this).html("Private");
+           $(this).html("Private (Invite Only)");
        }
        $(this).blur();
    }) ;
