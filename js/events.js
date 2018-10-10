@@ -69,8 +69,8 @@ function prependZerosLengthN(str, n) {
     if (str === undefined) {
         throw "Cannot format provided argument. Not a string.";
     }
-    else if (str.length < n) {
-        while (str.length < n) {
+    else if (str.toString().length < n) {
+        while (str.toString().length < n) {
             str = "0" + str;
         }
     }
