@@ -17,6 +17,7 @@ $(function() {
         $(".validation-warning").each(function() {
             toggleWarningById("#" + this.id, false);
         });
+        $("#billing-address-row [disabled]").removeAttr("disabled");
     });
 });
 
