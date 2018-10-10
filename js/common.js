@@ -5,11 +5,6 @@ var numSpinner;
 
 $(function() {
     $("#login-form").submit(validateLoginForm);
-    //reset login warnings when modal is dismissed
-    $("#login-modal").on("hidden.bs.modal", function(e) {
-        toggleWarning("#login-email", false);
-        toggleWarning("#login-password", false);
-    });
     initializeValidatables();
     initializeDatePickers();
     $(".number-spinner button").on("click", function(e) {
