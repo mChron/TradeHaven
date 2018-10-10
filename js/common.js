@@ -32,6 +32,9 @@ $(function() {
 });
 
 function removeRow() {
+    // clean up the tooltip from the DOM as well
+    var tipId = $(this).attr("aria-describedby");
+    $("#" + tipId).remove();
     $(this).parents("tr").remove();
 }
 
