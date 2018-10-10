@@ -8,6 +8,9 @@ function loadTestData(n) {
     $(img).prop("src", "images/open-chest.png");
     $(img).prop("height", "30");
     $(img).prop("width", "30");
+    $(img).attr("data-placement", "left");
+    $(img).attr("data-toggle", "tooltip");
+    $(img).attr("title", "Add To Cart");
     for(var i = 0; i < n; i++) {
         var row = document.createElement("tr");
         var c1 = document.createElement("td");
@@ -27,4 +30,5 @@ function loadTestData(n) {
         $(row).append(c5);
         $("tbody").append(row);
     }
+    initializeTooltips();
 }
