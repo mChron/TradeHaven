@@ -8,6 +8,11 @@ $(function() {
         $($("#login-modal button[type='submit']")).click(function() {
             $("#login-form").submit();
         });
+        //reset login warnings when modal is dismissed
+        $("#login-modal").on("hidden.bs.modal", function(e) {
+            toggleWarning("#login-email", false);
+            toggleWarning("#login-password", false);
+        });
     });
 });
 
