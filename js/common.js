@@ -38,6 +38,10 @@ function removeRow() {
     $(this).parents("tr").remove();
 }
 
+function initializeTooltips() {
+    $("[data-toggle='tooltip']").tooltip();
+}
+
 /*
  * Validate the fields in the login form.
  */
