@@ -2,6 +2,10 @@ $(function() {
     loadTestData(9);
 });
 
+/**
+ * Load test data into the inventory table.
+ * @param {type} n The number of rows to load.
+ */
 function loadTestData(n) {
     var img = document.createElement("img");
     $(img).addClass("clickable");
@@ -11,17 +15,17 @@ function loadTestData(n) {
     $(img).attr("data-placement", "left");
     $(img).attr("data-toggle", "tooltip");
     $(img).attr("title", "Add To Cart");
-    for(var i = 0; i < n; i++) {
-        var row = document.createElement("tr");
-        var c1 = document.createElement("td");
+    for(let i = 0; i < n; i++) {
+        let row = document.createElement("tr");
+        let c1 = document.createElement("td");
         $(c1).html("Test Card" + i);
-        var c2 = document.createElement("td");
+        let c2 = document.createElement("td");
         $(c2).html("Test Condition" + i);
-        var c3 = document.createElement("td");
+        let c3 = document.createElement("td");
         $(c3).html(10 + i);
-        var c4 = document.createElement("td");
+        let c4 = document.createElement("td");
         $(c4).html("$" + ((i+1) * (i+2))/100);
-        var c5 = document.createElement("td");
+        let c5 = document.createElement("td");
         $(c5).html($(img).clone());
         $(row).append(c1);
         $(row).append(c2);

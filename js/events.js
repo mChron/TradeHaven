@@ -77,9 +77,6 @@ function prependZerosLengthN(str, n) {
     return str.toString().slice(sliceIndx);
 }
 
-/*
- * Validate the events form for required attributes.
- */
 /**
  * Validate the events form for required attributes.
  * @param {type} e The triggered event, should be the submit of the form.

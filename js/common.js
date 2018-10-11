@@ -10,27 +10,47 @@ $(function() {
     $(".number-spinner button").on("click", function(e) {
         updateNumberSpinnerValue($(this));
     });
-    $(".number-spinner input").on("paste", function(e) {
+    $(".number-spinner input")
+    .on("paste", function(e) {
         $(this).change();
-    });
-    $(".number-spinner input").on("change", function(e) {
-        var parsed = parseInt($(this).val());
-        if (!isNaN(parsed)) {
-            $(this).val(parsed);
-        }
-        else {
-            $(this).val(1);
-        }
-    });
-    $(".number-spinner input").on("keypress", function(e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            e.preventDefault();
-        }
+    })
+    .on("change", function(e) {
+        ensureNumeric($(this));
+    })
+    .on("keypress", function(e) {
+        blockNonNumericKeypress(e);
     });
     initializeNumSpinner();
     $(".remove-row").click(removeRow);
 });
 
+/**
+ * Ensure the value in the provided input field was numeric, if not default to 1.
+ * @param {type} input The input field to validate the value on.
+ */
+function ensureNumeric(input) {
+    var parsed = parseInt($(input).val());
+    if (!isNaN(parsed)) {
+        $(input).val(parsed);
+    }
+    else {
+        $(input).val(1);
+    }
+}
+
+/**
+ * Block a non numeric keypress event. Used on number spinner components
+ * @param {type} e A keypress event to intercept
+ */
+function blockNonNumericKeypress(e) {
+    if (e.keyCode < 48 || e.keyCode > 57) {
+        e.preventDefault();
+    }
+}
+
+/**
+ * Remove the row in which this remove-row icon resides.
+ */
 function removeRow() {
     // clean up the tooltip from the DOM as well
     var tipId = $(this).attr("aria-describedby");
@@ -38,6 +58,9 @@ function removeRow() {
     $(this).parents("tr").remove();
 }
 
+/**
+ * Initialize all elements with tooltips on the page.
+ */
 function initializeTooltips() {
     $("[data-toggle='tooltip']").tooltip();
 }
@@ -60,6 +83,11 @@ function toggleWarning(prefix, truth) {
     toggleWarningById(prefix + "-validation-warning", truth);
 }
 
+/**
+ * Toggle a warning by it's id based on the truth param.
+ * @param {type} id The id of the warning to toggle.
+ * @param {type} truth Whether the warning should be shown.
+ */
 function toggleWarningById(id, truth) {
     var e = $(id);
     if (truth) {
@@ -81,12 +109,32 @@ function initializeValidatables() {
     $(".validatable-required").each(initValidatable);
 }
 
+/**
+ * Initialize all date picker components on the page.
+ */
 function initializeDatePickers() {
     $(".input-group.date").each(initDatePicker);
 }
 
-function initDatePicker(indx, val) {
-    $(val).datepicker({
+/**
+ * Iterator function to initialize a datepicker from the list.
+ * <br />
+ * Options include:
+ * <ul>
+ * <li>start date</li>
+ * <li>max view mode (days, months, years, decades)</li>
+ * <li>orientation from the input group</li>
+ * <li>multi date selection</li>
+ * <li>date highlighting</li>
+ * <li>autoclose when a date is selected</li>
+ * <li>highlight today</li>
+ * <li>etc...</li>
+ * </ul>
+ * @param {type} indx Obj index in the list.
+ * @param {type} obj The datepicker object
+ */
+function initDatePicker(indx, obj) {
+    $(obj).datepicker({
         startDate: "today",
         maxViewMode: 2,
         orientation: "bottom auto",
@@ -99,9 +147,14 @@ function initDatePicker(indx, val) {
     });
 }
 
-function initValidatable(indx, val) {
-//    console.log(val);
-    var fieldName = $(val).attr("title").toLowerCase();
+/**
+ * Iterator function to initialize a validatable field, i.e. add a hidden 
+ * warning message for a required field to be toggled when appropriate.
+ * @param {type} indx Index in the list.
+ * @param {type} obj The validatable object to initialize.
+ */
+function initValidatable(indx, obj) {
+    var fieldName = $(obj).attr("title").toLowerCase();
     var text = "* " + titleCase(fieldName) + " Required";
     fieldName = fieldName.replace(/ /g, "-");
     var element = document.createElement("label");
@@ -117,6 +170,12 @@ function initValidatable(indx, val) {
     }
 }
 
+/**
+ * Convert a string to title case, e.g. "test" -> "Test" or 
+ * "test series of words" -> "Test Series Of Words"
+ * @param {type} s The string to convert to title case.
+ * @returns {String} The converted string.
+ */
 function titleCase(s) {
     if (s.length > 1) {
         if (s.indexOf(" ") < 0) {
@@ -131,8 +190,10 @@ function titleCase(s) {
     }
 }
 
-/*
+/**
  * Produce a string where the first character is capitalized.
+ * @param {type} s The string to convert.
+ * @returns {String} The converted string.
  */
 function titleCaseSimple(s) {
     var head = s.substring(0,1).toUpperCase();
@@ -140,6 +201,11 @@ function titleCaseSimple(s) {
     return head + tail;
 }
 
+/**
+ * Convert multiple words in a string to title case.
+ * @param {type} s The string to convert to title case
+ * @returns {String} The converted string
+ */
 function titleCaseMulti(s) {
     var str = "" + s;
     var arr = str.split(" ");
@@ -154,6 +220,11 @@ function titleCaseMulti(s) {
     return final.substring(0, final.length - 1);
 }
 
+/**
+ * Update a number spinner components value. Maximum value is currently set at
+ * 10 and minimum of 1.
+ * @param {type} btn The number spinner button pressed.
+ */
 function updateNumberSpinnerValue(btn) {
     var oldValue = $(btn).closest(".number-spinner").find("input").val().trim();
     var newVal = 0;
@@ -174,6 +245,9 @@ function updateNumberSpinnerValue(btn) {
     $(btn).closest(".number-spinner").find("input").val(newVal);
 }
 
+/**
+ * Initialize the base number spinner object.
+ */
 function initializeNumSpinner() {
     numSpinner = document.createElement("div");
     $(numSpinner).addClass("input-group number-spinner");
@@ -200,21 +274,13 @@ function initializeNumSpinner() {
     $(input).val(1);
     $(numSpinner).append(input);
     $(input).on("paste", function(e) {
-        $(this).change();
+        $(input).change();
     })
     .on("change", function(e) {
-        var parsed = parseInt($(this).val());
-        if (!isNaN(parsed)) {
-            $(this).val(parsed);
-        }
-        else {
-            $(this).val(1);
-        }
+        ensureNumeric(input);
     })
     .on("keypress", function(e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-            e.preventDefault();
-        }
+        blockNonNumericKeypress(e);
     });
     
     var add = document.createElement("span");
@@ -234,10 +300,21 @@ function initializeNumSpinner() {
     $(addBtn).append(addImg);
 }
 
+/**
+ * Get a new instance of a number spinner with the listeners also copied.
+ * @returns {object} A deep clone of the number spinner
+ */
 function getNewNumberSpinner() {
     return $(numSpinner).clone(true);
 }
 
+/**
+ * Add the required tooltip properties to a given dom object that needs
+ * to have a popover tooltip.
+ * @param {type} obj The object that needs the tooltip information.
+ * @param {type} dir The direction the tooltip should display.
+ * @param {type} title The text that should be displayed in the tooltip.
+ */
 function addTooltipProperties(obj, dir, title) {
     $(obj).attr("data-toggle", "tooltip");
     $(obj).attr("data-placement", dir);
