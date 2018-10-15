@@ -12,13 +12,14 @@ $(function() {
  */
 function validateContactForm(e) {
     e.preventDefault();
-    var reg = new RegExp(".+@.+[.][a-z]{2,4}$");
+    var emailRegEx = new RegExp(".+@.+[.][a-z]{2,4}$");
     toggleWarning("#subject", !$("#contact-subject").val());
     toggleWarning("#message", !$("#contact-message").val());
     toggleWarning("#message-length", $("#contact-message").val().length < 250);
     toggleWarning("#name", !$("#contact-name").val());
     toggleWarning("#contact-email", !$("#contact-email").val());
-    toggleWarning("#contact-valid-email", !reg.test($("#contact-email").val()));
+    var email = $("#contact-email").val();
+    toggleWarning("#contact-valid-email", email && !emailRegEx.test(email));
     if ($("#contact-form .validation-warning:visible")[0] === undefined) {
         $("#contact-form")[0].reset();
         $("#contact-modal").modal();
