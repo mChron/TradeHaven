@@ -30,6 +30,13 @@ label.validation-warning {
     float: left;
 }
 
-#valid-email-wrapper, #pass-match-wrapper {
+#valid-email-wrapper, #pass-match-wrapper, #valid-phone-wrapper {
     float: right;
+}
+
+@media (max-width:768px) {
+    .right label:not(.validation-warning), #shipping-address-row label:not(.validation-warning):not(.top-label),
+    #billing-address-row label:not(.validation-warning):not(.top-label) {
+        margin-top: 20px;
+    }
 }

@@ -74,19 +74,19 @@ function validateLoginForm(e) {
     toggleWarning("#login-password", !$("#login-pass").val());
 }
 
-/*
+/**
  * Toggles the visibility of a validation warning
- * @param {type} prefix The prefix of the validation warning element.
- * @param {truth} Whether or not to display the validation warning.
+ * @param {String} prefix The prefix of the validation warning element.
+ * @param {boolean} truth Whether or not to display the validation warning. Default true
  */
-function toggleWarning(prefix, truth) {
+function toggleWarning(prefix, truth = true) {
     toggleWarningById(prefix + "-validation-warning", truth);
 }
 
 /**
  * Toggle a warning by it's id based on the truth param.
- * @param {type} id The id of the warning to toggle.
- * @param {type} truth Whether the warning should be shown.
+ * @param {String} id The id of the warning to toggle.
+ * @param {boolean} truth Whether the warning should be shown.
  */
 function toggleWarningById(id, truth) {
     var e = $(id);
@@ -106,7 +106,10 @@ function toggleWarningById(id, truth) {
  * The toggling of the element is still up to the individual page and validation. 
  */
 function initializeValidatables() {
+    let evt = new Event("validatablesInitialized",
+    {"detail": "Fields with the validatable-required class have been initialized."});
     $(".validatable-required").each(initValidatable);
+    document.dispatchEvent(evt);
 }
 
 /**
@@ -159,7 +162,7 @@ function initValidatable(indx, obj) {
     fieldName = fieldName.replace(/ /g, "-");
     var element = document.createElement("label");
     $(element).prop("id", fieldName + "-validation-warning");
-    $(element).addClass("validation-warning d-none");
+    $(element).addClass("validation-warning d-none required-warning");
     $(element).html(text);
     var parent = $(this).parents()[0];
     if ($(this).hasClass("validatable-after-parent")) {

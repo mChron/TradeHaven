@@ -6,11 +6,9 @@ $(function() {
     // click event for the same as shipping checkbox
     $("#same-as-shipping-checkbox").click(function() {
         modifyBillingAddress(this.checked);
-        toggleWarning("#billing-house", false);
-        toggleWarning("#billing-street", false);
-        toggleWarning("#billing-city", false);
-        toggleWarning("#billing-state", false);
-        toggleWarning("#billing-zip", false);
+        $("#billing-address-row .validation-warning").each(function() {
+            toggleWarningById("#" + this.id, false);
+        });
     });
     $("#signup-form").submit(validateSignupForm);
     $("#signup-form").on("reset", function(e) {
@@ -19,7 +17,17 @@ $(function() {
         });
         $("#billing-address-row [disabled]").removeAttr("disabled");
     });
+    $(document).on("validatablesInitialized", updateSignupValidatables);
 });
+
+function updateSignupValidatables() {
+    $("#contact-information-fieldset .row").each(function() {
+        let left = $(this).find(".column")[0];
+        let right = $(this).find(".column")[1];
+        $(left).addClass("left");
+        $(right).addClass("right");
+    });
+}
 
 /*
  * Listener for the same as shipping checkbox.
@@ -28,18 +36,11 @@ $(function() {
  */
 function modifyBillingAddress(checked) {
     if (!checked) {
-        $("#signup-billing-house-input").removeAttr("disabled");
-        $("#signup-billing-street-input").removeAttr("disabled");
-        $("#signup-billing-city-input").removeAttr("disabled");
-        $("#signup-billing-state-select").removeAttr("disabled");
-        $("#signup-billing-zip-input").removeAttr("disabled");
+        $("#billing-address-row input, #billing-address-row select").removeAttr("disabled");
     }
     else {
-        $("#signup-billing-house-input").prop("disabled", "disabled").val("");
-        $("#signup-billing-street-input").prop("disabled", "disabled").val("");
-        $("#signup-billing-city-input").prop("disabled", "disabled").val("");
+        $("#billing-address-row input").prop("disabled", "disabled").val("");
         $("#signup-billing-state-select").prop("disabled", "disabled").prop("selectedIndex", 0);
-        $("#signup-billing-zip-input").prop("disabled", "disabled").val("");
     }
 }
 
@@ -68,27 +69,31 @@ function loadStates() {
  */
 function validateSignupForm(e) {
     e.preventDefault();
-    var reg = new RegExp(".+@.+[.][a-z]{2,4}$");
-    toggleWarning("#first-name", !$("#signup-firstname-input").val());
-    toggleWarning("#last-name", !$("#signup-lastname-input").val());
-    toggleWarning("#signup-email", !$("#signup-email-input").val());
-    toggleWarning("#valid-email", !reg.test($("#signup-email-input").val()));
-    toggleWarning("#phone", !$("#signup-phone-input").val());
-    toggleWarning("#signup-password", !$("#signup-password-input").val());
-    toggleWarning("#confirm-password", !$("#signup-password-confirm-input").val());
+    var emailRegEx = new RegExp(".+@.+[.][a-z]{2,4}$");
+    var email = $("#signup-email-input").val();
+    var zipRegEx = new RegExp("[0-9]{5}");
+    var phoneRegEx = new RegExp("^[0-9]{3}[\- ]{1}[0-9]{3}[\- ]{1}[0-9]{4}$");
+    var phoneRegEx2 = new RegExp("^[0-9]{10}$");
+    var phone = $("#signup-phone-input").val();
+    var houseRegEx = new RegExp("^[0-9]{1,5}$");
+    var shipHouse = $("#signup-shipping-house-input").val();
+    var billHouse = $("#signup-billing-house-input").val();
+    $("#signup-form input.validatable-required, #signup-form select.validatable-required").each(function() {
+        let id = $($(this).parents()[0]).children(".required-warning").attr("id");
+        let val = $(this).val();
+        toggleWarningById("#" + id, !val);
+    });
+    $(".zip").each(function() {
+        let id = $($(this).parents()[0]).find(".format-warning").attr("id");
+        let val = $(this).val();
+        toggleWarningById("#" + id, val && !zipRegEx.test(val));
+    })
+    toggleWarning("#valid-email", email && !emailRegEx.test(email));
+    toggleWarning("#phone-format", phone && !phoneRegEx.test(phone) && !phoneRegEx2.test(phone));
     toggleWarning("#pass-match", $("#signup-password-input").val() !== $("#signup-password-confirm-input").val());
-    toggleWarning("#shipping-house", !$("#signup-shipping-house-input").val());
-    toggleWarning("#shipping-street", !$("#signup-shipping-street-input").val());
-    toggleWarning("#shipping-city", !$("#signup-shipping-city-input").val());
-    toggleWarning("#shipping-state", !$("#signup-shipping-state-select").val());
-    toggleWarning("#shipping-zip", !$("#signup-shipping-zip-input").val());
-
+    toggleWarning("#ship-house-format", shipHouse && !houseRegEx.test(shipHouse));
     if (!$("#same-as-shipping-checkbox").prop("checked")) {
-        toggleWarning("#billing-house", !$("#signup-billing-house-input").val());
-        toggleWarning("#billing-street", !$("#signup-billing-street-input").val());
-        toggleWarning("#billing-city", !$("#signup-billing-city-input").val());
-        toggleWarning("#billing-state", !$("#signup-billing-state-select").val());
-        toggleWarning("#billing-zip", !$("#signup-billing-zip-input").val());
+        toggleWarning("#bill-house-format", billHouse && !houseRegEx.test(billHouse));
     }
     if ($(".validation-warning:visible").length === 0) {
         $("#signup-form").off("submit");
