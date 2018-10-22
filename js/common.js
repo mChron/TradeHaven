@@ -4,6 +4,7 @@ Date: 9/17/18 */
 var numSpinner;
 
 $(function() {
+    addBgCollage();
     $("#login-form").submit(validateLoginForm);
     initializeValidatables();
     initializeDatePickers();
@@ -23,6 +24,15 @@ $(function() {
     initializeNumSpinner();
     $(".remove-row").click(removeRow);
 });
+
+function addBgCollage() {
+    let bg = document.createElement("img");
+    bg.src = "images/cards/promotional/base/Sketch001.jpg";
+    bg.id = "bg-collage";
+    bg.height = window.innerHeight;
+    bg.width = window.innerWidth;
+    $(".jumbotron").before(bg);
+}
 
 /**
  * Ensure the value in the provided input field was numeric, if not default to 1.
