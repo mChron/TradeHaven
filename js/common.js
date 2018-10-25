@@ -29,9 +29,10 @@ function addBgCollage() {
     let bg = document.createElement("img");
     bg.src = "images/cards/promotional/base/Sketch001.jpg";
     bg.id = "bg-collage";
-    bg.height = window.innerHeight;
-    bg.width = window.innerWidth;
-    $(".jumbotron").before(bg);
+    bg.classname = "container-fluid";
+    bg.height = 830;
+    bg.width = 1520;
+//    $(".jumbotron").after(bg);
 }
 
 /**

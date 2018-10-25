@@ -34,6 +34,14 @@ function loadHeaderAndFooterAjax() {
             var head = $(data)[3];
             $(document.body).append($(head).clone());
             setActiveNavLink();
+            $(".dropdown").on("mouseover", function(e) {
+                $(this).children(".dropdown-toggle").dropdown("toggle").blur();
+            });
+            $(".dropdown").on("mouseout", function(e) {
+                $(this).removeClass("show");
+                $(this).children(".dropdown-menu").removeClass("show");
+                $(this).children(".dropdown-toggle").blur();
+            });
         }
     });
     $.ajax({
