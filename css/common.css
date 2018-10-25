@@ -12,6 +12,10 @@ Date: 9/9/18 */
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    margin-left: -15px;
+    margin-right: -15px;
+    font-weight: 500;
+    min-height: 730px;
 }
 
 .dropdown-menu {
@@ -30,14 +34,6 @@ Date: 9/9/18 */
 
 #login-links-wrapper {
     margin-top: 10px;
-}
-
-/* used for various jumbotron elements to extend to full page width */
-.jumbotron {
-    margin-left: -15px;
-    margin-right: -15px;
-    font-weight: 500;
-    min-height: 730px;
 }
 
 label.validation-warning {
