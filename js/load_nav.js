@@ -51,6 +51,8 @@ function loadHeaderAndFooterAjax() {
             var foot = $(data)[3];
             $(document.body).append($(foot).clone());
             loadCopyrightYear();
+            //set jumbotron minimum height to fill space between header and footer
+            $(".jumbotron").css("min-height", window.innerHeight - $("#footer").height() - $("#header").height());
         }
     });
 }
