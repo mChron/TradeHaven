@@ -53,6 +53,7 @@ function loadHeaderAndFooterAjax() {
             loadCopyrightYear();
             //set jumbotron minimum height to fill space between header and footer
             $(".jumbotron").css("min-height", window.innerHeight - $("#footer").height() - $("#header").height());
+            $(".jumbotron").css("min-width", window.innerWidth);
         }
     });
 }

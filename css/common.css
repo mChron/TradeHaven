@@ -44,6 +44,12 @@ label.validation-warning {
     color: #f00;
 }
 
+figcaption {
+    font-style: italic;
+    word-break: break-all;
+    font-size: 12px;
+}
+
 .clickable {
     cursor: pointer;
 }

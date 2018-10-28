@@ -4,7 +4,6 @@ Date: 9/17/18 */
 var numSpinner;
 
 $(function() {
-    addBgCollage();
     $("#login-form").submit(validateLoginForm);
     initializeValidatables();
     initializeDatePickers();
@@ -23,16 +22,20 @@ $(function() {
     });
     initializeNumSpinner();
     $(".remove-row").click(removeRow);
+    checkForHash();
 });
 
-function addBgCollage() {
-    let bg = document.createElement("img");
-    bg.src = "images/cards/promotional/base/Sketch001.jpg";
-    bg.id = "bg-collage";
-    bg.classname = "container-fluid";
-    bg.height = 830;
-    bg.width = 1520;
-//    $(".jumbotron").after(bg);
+function checkForHash() {
+    let hash = location.hash;
+    if (hash !== "") {
+        let multiHash = hash.substring(1).indexOf("#") > 0;
+        if (multiHash) {
+            location.hash = "#" + hash.substring(1, hash.substring(1).indexOf("#") + 1);
+        }
+        else {
+            location.hash = hash;
+        }
+    }
 }
 
 /**
