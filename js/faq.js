@@ -9,10 +9,17 @@ $(function() {
 
 function initializeToc() {
     $(".toc-header").each(function(indx, value) {
-        value.id = value.innerHTML;
+        let anchor = document.createElement("a");
+        anchor.id = value.innerHTML;
+        $(value).prepend(anchor);
+        $(anchor).css({
+            "margin-top": "-70px",
+            "display": "block",
+            "position": "absolute"
+        });
         let link = document.createElement("a");
-        link.innerHTML = value.innerHTML;
-        link.href = window.location + "#" + link.innerHTML;
+        link.innerHTML = anchor.id;
+        link.href = window.location + "#" + anchor.id;
         let li = document.createElement("li");
         $(li).append(link);
         $("#how-to-toc").append(li);
@@ -20,5 +27,5 @@ function initializeToc() {
 }
 
 $(window).on("hashchange", function(e) {
-    console.log(location.hash);
+    checkForHash();
 });
