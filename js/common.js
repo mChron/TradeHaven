@@ -23,6 +23,12 @@ $(function() {
     initializeNumSpinner();
     $(".remove-row").click(removeRow);
     checkForHash();
+    $(window).on("hashChange", function(e) {
+        checkForHash();
+    });
+    $(".return-to-top").click(function() {
+        $(window).scrollTop(0);
+    })
 });
 
 function checkForHash() {

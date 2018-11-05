@@ -8,3 +8,30 @@
 #fig-read-card {
     width: 400px;
 }
+
+#how-to-toc {
+    counter-reset: item;
+}
+
+button.return-to-top {
+    float: right;
+    margin-right: 10px;
+}
+
+.toc-sub-header {
+    width: fit-content;
+}
+
+ol {
+    counter-reset: item;
+}
+
+#how-to-toc li{
+    display: block;
+}
+
+/* display sublists as 1.1, 1.2, 2.1, 3.1, etc...*/
+#how-to-toc li:before {
+    content: counters(item, ".") " ";
+    counter-increment: item; 
+}
