@@ -5,22 +5,13 @@
  */
 $(function() {
     initializeToc();
-    $(".topic, .sub-topic").click(function(e) {
-        let anchor = document.getElementById($(this).children().first().html());
-        $(anchor).parent(0).css({"border": "solid 5px yellow"}).animate({
-            "borderBottomWidth": "0px",
-            "borderTopWidth": "0px",
-            "borderLeftWidth": "0px",
-            "borderRightWidth": "0px"
-        }, 2000);
-    });
 });
 
 function initializeToc() {
-    $(".toc-header, .toc-sub-header").each(function(indx, value) {
+    $(".toc-header, .toc-sub-header").each(function(indx, header) {
         let anchor = document.createElement("a");
-        anchor.id = value.innerHTML;
-        $(value).prepend(anchor);
+        anchor.id = header.innerHTML.trim();
+        $(header).prepend(anchor);
         $(anchor).css({
             "margin-top": "-70px",
             "display": "block",
@@ -33,7 +24,12 @@ function initializeToc() {
         $(li).append(link);
         if ($(this).hasClass("toc-header")) {
             $(li).addClass("topic");
-            $("#how-to-toc").append(li);      
+            $("#how-to-toc").append(li);
+            let returnToTop = document.createElement("button");
+            returnToTop.innerHTML = "Return To Top";
+            returnToTop.className = "btn button-custom return-to-top";
+            $(returnToTop).click(function() {document.body.scrollTop = 0; document.documentElement.scrollTop = 0;});
+            $(header).append(returnToTop);
         }
         else {
             $(li).addClass("sub-topic");
