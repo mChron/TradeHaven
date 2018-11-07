@@ -16,15 +16,6 @@ $(function() {
     });
 });
 
-/*
- * Replaces the placeholder character in the footer with the current year.
- */
-function loadCopyrightYear() {
-    var d = new Date();
-    var cpy = $("#cpy").html().toString();
-    $("#cpy").html(cpy.replace("_", d.getFullYear()));
-}
-
 /*Load header and footer via ajax*/
 function loadHeaderAndFooterAjax() {
     $.ajax({
@@ -56,25 +47,6 @@ function loadHeaderAndFooterAjax() {
             $(".jumbotron").css("min-width", window.innerWidth);
         }
     });
-}
-
-/*Set the current page link to 'active' in the navigation bar*/
-function setActiveNavLink() {
-    // get the current url and set the appropriate nav-link as active
-    var url = document.location.href;
-    var link = url.substring(url.lastIndexOf("/") + 1);
-    $(".nav-link")
-    .filter(function() {
-        return this.href.match(link);
-    })
-    .addClass("active");
-    $(".dropdown-item")
-    .filter(function() {
-        return this.href.match(link);
-    })
-    .addClass("active")
-    .parents(0)
-    .addClass("active");
 }
 
 /*Load common modal with content from the provided url via ajax */

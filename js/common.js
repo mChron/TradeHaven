@@ -28,8 +28,35 @@ $(function() {
     });
     $(".return-to-top").click(function() {
         $(window).scrollTop(0);
-    })
+    });
+                $(".dropdown").on("mouseover", function(e) {
+                $(this).children(".dropdown-toggle").dropdown("toggle").blur();
+            });
+            $(".dropdown").on("mouseout", function(e) {
+                $(this).removeClass("show");
+                $(this).children(".dropdown-menu").removeClass("show");
+                $(this).children(".dropdown-toggle").blur();
+            });
 });
+
+/*Set the current page link to 'active' in the navigation bar*/
+function setActiveNavLink() {
+    // get the current url and set the appropriate nav-link as active
+    var url = document.location.href;
+    var link = url.substring(url.lastIndexOf("/") + 1);
+    $(".nav-link")
+    .filter(function() {
+        return this.href.match(link);
+    })
+    .addClass("active");
+    $(".dropdown-item")
+    .filter(function() {
+        return this.href.match(link);
+    })
+    .addClass("active")
+    .parents(0)
+    .addClass("active");
+}
 
 function checkForHash() {
     let hash = location.hash;
@@ -84,6 +111,15 @@ function validateLoginForm(e) {
     e.preventDefault();
     toggleWarning("#login-email", !$("#login-email").val());
     toggleWarning("#login-password", !$("#login-pass").val());
+}
+
+/*
+ * Replaces the placeholder character in the footer with the current year.
+ */
+function loadCopyrightYear() {
+    var d = new Date();
+    var cpy = $("#cpy").html().toString();
+    $("#cpy").html(cpy.replace("_", d.getFullYear()));
 }
 
 /**
@@ -336,3 +372,4 @@ function addTooltipProperties(obj, dir, title) {
     $(obj).attr("title", title);
     $(obj).tooltip();
 }
+
