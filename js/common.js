@@ -29,15 +29,30 @@ $(function() {
     $(".return-to-top").click(function() {
         $(window).scrollTop(0);
     });
-                $(".dropdown").on("mouseover", function(e) {
-                $(this).children(".dropdown-toggle").dropdown("toggle").blur();
-            });
-            $(".dropdown").on("mouseout", function(e) {
-                $(this).removeClass("show");
-                $(this).children(".dropdown-menu").removeClass("show");
-                $(this).children(".dropdown-toggle").blur();
-            });
+    $(".dropdown").on("mouseover", function(e) {
+        $(this).children(".dropdown-toggle").dropdown("toggle").blur();
+    });
+    $(".dropdown").on("mouseout", function(e) {
+        $(this).removeClass("show");
+        $(this).children(".dropdown-menu").removeClass("show");
+        $(this).children(".dropdown-toggle").blur();
+    });
+    setInterval("displayTime()", 1000);
 });
+
+function displayTime() {
+    let d = new Date();
+    $("#date").html(d.toDateString("EE, MMM d"));
+    let hr = d.getHours();
+    let mid = hr > 12 ? "pm" : "am";
+    hr = hr % 12;
+    hr = hr < 10 ? "0" + hr : hr;
+    let min = d.getMinutes();
+    min = min < 10 ? "0" + min : min;
+    let sec = d.getSeconds();
+    sec = sec < 10 ? "0" + sec : sec;
+    $("#time").html(hr + ":" + min + ":" + sec + mid);
+}
 
 /*Set the current page link to 'active' in the navigation bar*/
 function setActiveNavLink() {

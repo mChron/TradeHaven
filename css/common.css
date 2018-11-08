@@ -18,6 +18,10 @@ Date: 9/9/18 */
     min-height: 730px;
 }
 
+#date-time {
+    color: #ffffff;
+}
+
 .dropdown-menu {
     margin-top: -3px;
 }
