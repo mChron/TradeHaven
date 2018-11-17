@@ -7,6 +7,9 @@ $(function() {
     $("#login-form").submit(validateLoginForm);
     initializeValidatables();
     initializeDatePickers();
+    //set jumbotron minimum height to fill space between header and footer
+    $(".jumbotron").css("min-height", window.innerHeight - $("#footer").height() - $("#header").height());
+    $(".jumbotron").css("min-width", window.innerWidth);
     $(".number-spinner button").on("click", function(e) {
         updateNumberSpinnerValue($(this));
     });
@@ -126,6 +129,10 @@ function validateLoginForm(e) {
     e.preventDefault();
     toggleWarning("#login-email", !$("#login-email").val());
     toggleWarning("#login-password", !$("#login-pass").val());
+    if ($("#login-form .validation-warning:visible")[0] === undefined) {
+        $("#login-form").off("submit");
+        $("#login-form").submit();
+    }
 }
 
 /*

@@ -3,7 +3,6 @@ Author: Marcus Chronabery
 Date: 9/17/18 */
 $(function() {
     $("#contact-form").submit(validateContactForm);
-    loadCommonModalAjax("Contact", "Close", "pages/business/contact_feedback_modal_content.html", function(){});
 });
 
 /*

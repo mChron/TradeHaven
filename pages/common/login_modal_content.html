@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!-- Filename: login_modal_content.html
+Author: Marcus Chronabery
+Date: 9/7/18 -->
+<div class="container">
+    <div class="alert alert-danger d-none">
+        Invalid Email or Password!
+    </div>
+    <form id="login-form" action="php/loginFormProcess.php" method="POST">
+        <div class="row" id="login-email-wrapper">
+            <label id="login-email-label">Email</label>
+            <input id="login-email" type="email" class="form-control validatable-required" title="Login Email" placeholder="example@yahoo.com" name="logEmail"/>
+        </div>
+        <div class="row" id="login-pass-wrapper">
+            <label id="login-password-label">Password</label>
+            <input id="login-pass" type="password" class="form-control validatable-required" title="Login Password" name="logPassword"/>
+        </div>
+        <div class="row" id="login-links-wrapper">
+            <a id="forgot-password-link" href="pages/user/forgot_password.php">Forgot Password</a>
+            <a id="sign-up-link" href="pages/user/signup.php">Sign up For An Account</a>
+        </div>
+    </form>
+</div>

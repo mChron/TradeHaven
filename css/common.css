@@ -5,6 +5,9 @@ Date: 9/9/18 */
 .button-custom {
     border: solid 1px grey;
 }
+.hidden {
+    display: none;
+}
 
 .jumbotron {
     background-color: transparent;

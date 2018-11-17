@@ -1,5 +1,5 @@
 $(function() {
-    loadTestData(9);
+    initializeTooltips();
 });
 
 /**
@@ -34,5 +34,4 @@ function loadTestData(n) {
         $(row).append(c5);
         $("tbody").append(row);
     }
-    initializeTooltips();
 }

@@ -3,7 +3,7 @@ Author: Marcus Chronabery
 Date: 9/8/18 */
 $(function() {
     loadHeaderAndFooterAjax();
-    loadCommonModalAjax("Login", "Login", "pages/user/login_modal_content.html", function() {
+    loadCommonModalAjax("Login", "Login", "pages/common/login_modal_content.html", function() {
         $("#login-form").submit(validateLoginForm);
         $($("#login-modal button[type='submit']")).click(function() {
             $("#login-form").submit();

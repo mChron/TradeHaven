@@ -5,3 +5,8 @@ Date: 9/22/18 */
 .btn-column {
     width: 30px;
 }
+
+.card-image, .detailed-view {
+    float: right;
+    margin-left: 10px;
+}
