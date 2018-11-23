@@ -60,6 +60,8 @@ function loadStates() {
                 $("#signup-shipping-state-select").append(opt);
                 $("#signup-billing-state-select").append($(opt).clone());
             });
+            $("#signup-shipping-state-select option[value='" + $("#signup-shipping-state-select").attr("value") + "']").attr("selected", "selected");
+            $("#signup-billing-state-select option[value='" + $("#signup-billing-state-select").attr("value") + "']").attr("selected", "selected");
         }
     });
 }
@@ -80,8 +82,10 @@ function validateSignupForm(e) {
     var billHouse = $("#signup-billing-house-input").val();
     $("#signup-form input.validatable-required, #signup-form select.validatable-required").each(function() {
         let id = $($(this).parents()[0]).children(".required-warning").attr("id");
-        let val = $(this).val();
-        toggleWarningById("#" + id, !val);
+        if (id.indexOf("bill") >= 0 && !$("#same-as-shipping-checkbox").prop("checked")) {
+            let val = $(this).val();
+            toggleWarningById("#" + id, !val);
+        }
     });
     $(".zip").each(function() {
         let id = $($(this).parents()[0]).find(".format-warning").attr("id");

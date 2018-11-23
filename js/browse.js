@@ -1,5 +1,16 @@
 $(function() {
     initializeTooltips();
+    $(".detailed-view").click(function() {
+        let cardId = $(this).parents("td").prev("td").html();
+        // url, data (query params), callback
+        $.getJSON(document.url + '../../php/lookup_card.php', {"card_id": cardId}, function(data) {
+            // array of column information
+            let i = $(".card-col").length;
+            for (let x = 0; x < i; x++) {
+                $($(".card-col")[x]).html(data[x+1]);
+            }
+        });
+    });
 });
 
 /**

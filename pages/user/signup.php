@@ -17,7 +17,7 @@ Date: 11/17/18 -->
             <div class="row">
                 <div class="col-md-12">
                     <div id="signup-jumbotron" class="jumbotron">
-                        <form method="GET" action="#" role="form" id="signup-form" novalidate>
+                        <form method="POST" action="php/signupFormProcess.php" role="form" id="signup-form" novalidate>
                             <h2>Sign Up</h2>
                             <fieldset id="contact-information-fieldset">
                                 <legend id="contact-information-legend">Contact Information</legend>

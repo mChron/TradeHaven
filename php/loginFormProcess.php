@@ -5,7 +5,7 @@ session data for the user to shop. If incorrect login
 information (bad username and/or bad password) is entered,
 the user is presented with an error. 
 */
-include "../../../db_connect.php";
+include "../../db_connect.php";
 session_start();
 if (isset($_SESSION['customer_id'])) {
     header("Location: ../pages/inventory/browse.php");
@@ -15,12 +15,13 @@ $numRecords = mysqli_num_rows($rowsWithMatchingLoginName);
 if ($numRecords == 0)
 {
     //No records were retrieved, so ...
-    header("Location: ../pages/loginForm.php?retrying=true");
+//    header("Location: ../pages/no_records");
+    echo "OH DEAR";
 }
 if ($numRecords == 1)
 {
     $row = mysqli_fetch_array($rowsWithMatchingLoginName);
-    if ($_POST['logPassword'] == $row['password'])
+    if ($_POST[logPassword] == $row['password'])
     {
         $_SESSION['customer_id'] = $row['user_id'];
         $_SESSION['customer_first_name'] = $row['first_name'];
@@ -44,7 +45,7 @@ if ($numRecords == 1)
     {
         //The password entered did not match the database
         //password for the login name entered, so ...
-        header("Location: ../pages/logPassword.php?retrying=true");
+        header("Location: ../pages/badPass");
     }
 }
 mysqli_close($mysqli);

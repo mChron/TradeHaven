@@ -5,4 +5,3 @@
     $_SESSION['customer_last_name'] = null;
     $_SESSION['purchasePending'] = null;
     session_write_close();
-    header("Location: ../index.php");

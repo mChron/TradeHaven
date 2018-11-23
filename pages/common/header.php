@@ -26,32 +26,44 @@ Date: 11/7/18 -->
             <li class="nav-item">
                 <a class="nav-link" href="pages/info/faq.php">FAQ & How-To</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="pages/business/contact.php">Contact Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="pages/info/about.php">About Us</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarBusinessDropdownLink" data-toggle="dropdown">Business</a>
+                <div class="dropdown-menu" aria-labelledby="navbarBusinessDropdownLink">
+                    <a class="dropdown-item" href="pages/info/about.php">About Us</a>
+                    <a class="dropdown-item" href="pages/business/contact.php">Contact Us</a>
+                </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="pages/inventory/browse.php" id="navbarInventoryDropdownLink" data-toggle="dropdown">Inventory</a>
                 <div class="dropdown-menu" aria-labelledby="navbarInventoryDropdownLink">
                     <a class="dropdown-item" href="pages/inventory/browse.php">Buy</a>
-                    <a class="dropdown-item" href="pages/inventory/sell.php">Sell</a>
-                    <a class="dropdown-item" href="pages/inventory/trade.php">Trade</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="pages/inventory/purchase_history.php">Purchase History</a>
-                    <a class="dropdown-item" href="pages/inventory/sell_history.php">Sell History</a>
-                    <a class="dropdown-item" href="pages/inventory/trade_history.php">Trade History</a>
+                    <?php
+                        session_start();
+                        $loggedIn = isset($_SESSION['customer_id']);
+                        if ($loggedIn) {
+                            echo '
+                            <a class="dropdown-item" href="pages/inventory/sell.php">Sell</a>
+                            <a class="dropdown-item" href="pages/inventory/trade.php">Trade</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="pages/inventory/purchase_history.php">Purchase History</a>
+                            <a class="dropdown-item" href="pages/inventory/sell_history.php">Sell History</a>
+                            <a class="dropdown-item" href="pages/inventory/trade_history.php">Trade History</a>';
+                        }
+                    ?>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="pages/user/cart.php">My Cart</a>
-            </li>
-            <li class="nav-item">
             <?php 
-                session_start();
-                $loggedIn = isset($_SESSION['customer_id']);
-                echo '<button type="button" class="btn btn-primary';
+                if ($loggedIn) {
+                    echo 
+                    '<li class="nav-item">
+                        <a class="nav-link" href="pages/user/cart.php">My Cart</a>
+                    </li>';
+                    echo 
+                    '<li class="nav-item">
+                        <a class="nav-link" href="pages/user/my_account.php">My Account</a>
+                    </li>';
+                }
+                echo '<li class="nav-item"><button type="button" class="btn btn-primary';
                 if ($loggedIn) {
                     echo ' log-out">Logout</button>';
                 }

@@ -41,6 +41,15 @@ $(function() {
         $(this).children(".dropdown-toggle").blur();
     });
     setInterval("displayTime()", 1000);
+    $(".log-out").click(function() {
+        $.ajax({
+            "url": document.url + "/../php/logout.php",
+            "method": "GET",
+            "success": function(e) {
+                location.href = "index.php";
+            }
+        });
+    });
 });
 
 function displayTime() {

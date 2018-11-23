@@ -10,9 +10,11 @@ Date: 11/7/18-->
         <script src="js/browse.js"></script>
     </head>
     <body>
-        <?php include "../../pages/common/header.php" ?>
-        <?php include "../../pages/common/login_modal.php"?>
-        <?php include "../../pages/common/footer.php" ?>
+        <?php 
+            include "../../pages/common/header.php";
+            include "../../pages/common/login_modal.php";
+            include "../../pages/common/footer.php";
+            include "detailed_card_view.php" ?>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -40,7 +42,9 @@ Date: 11/7/18-->
                                             <td class=\"card-id hidden\">{$row[0]}</td>
                                             <td class=\"card-name\" colspan=\"1\">
                                                 {$row[1]}
-                                                <img class=\"detailed-view clickable\" src=\"images/glyphicons/glyphicons-28-search.png\" data-toggle='tooltip' data-placement='top' title='Detailed View' />
+                                                <a href=\"#\" data-toggle='modal' data-target='#detailed-card-view-modal'>
+                                                    <img class=\"detailed-view clickable\" src=\"images/glyphicons/glyphicons-28-search.png\" data-toggle='tooltip' data-placement='top' title='Detailed View'/>
+                                                </a>
                                                 <a href=\"https://api.scryfall.com/cards/named?exact={$row[1]}&format=image&version=normal\">
                                                     <img class=\"card-image\" src=\"images/glyphicons/glyphicons-12-camera.png\" data-toggle='tooltip' data-placement='top' title='Card Image' />
                                                 </a>
@@ -50,8 +54,10 @@ Date: 11/7/18-->
                                             <td class=\"card-condition\" colspan=\"1\">$row[4]</td>
                                             <td class=\"card-quantity\" colspan=\"1\">$row[5]</td>
                                             <td class=\"card-price\" colspan=\"1\">$$row[6]</td>";
-                                        print '<td class="btn-column" colspan="1"><img class="clickable" src="images/open-chest.png" height="30" width="30" data-placement="left" data-toggle="tooltip" title="Add To Cart" /></td>
-                                        </tr>';
+                                        if ($loggedIn) {
+                                            print '<td class="btn-column" colspan="1"><img class="clickable" src="images/open-chest.png" height="30" width="30" data-placement="left" data-toggle="tooltip" title="Add To Cart" /></td>';
+                                        }
+                                        print '</tr>';
                                         $row = mysqli_fetch_array($result);
                                     }
                                 ?>
