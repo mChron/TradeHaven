@@ -15,6 +15,23 @@
     width: 5%;
 }
 
-.edit-sell-card {
+.edit-sell-card, .card-image, #submit-sale {
     float: right;
+}
+
+#submit-sale {
+    margin-left: -10px;
+}
+
+#button-wrapper {
+    margin-bottom: 55px;
+}
+
+.card-image {
+    margin-left: 10px;
+}
+
+#sell-edit-modal-body {
+    max-height: 500px;
+    overflow-y: scroll;
 }

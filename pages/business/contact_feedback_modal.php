@@ -17,7 +17,6 @@ Date: 11/7/18-->
             </div>
             <!-- end modal body -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-light button-custom" data-dismiss="modal">Close</button>
             </div>
             <!-- end modal footer -->
         </div>

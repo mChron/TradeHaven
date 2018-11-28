@@ -16,7 +16,7 @@ Date: 11/7/18 -->
             <div class="row">
                 <div class="col-md-12">
                     <div id="contact-jumbotron" class="jumbotron">
-                        <form id="contact-form" action="#" method="GET" novalidate>
+                        <form id="contact-form" action="php/contactFormProcess.php" method="POST" novalidate>
                             <h2>Contact Us</h2>
                             <div id="subject-wrapper" class="row col-md-6">
                                 <label for="contact-subject" id="subject-label">Subject</label>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- Filename: sell_history.php
+<!-- Filename: sell_transaction.php
 Author: Marcus Chronabery
-Date: 11/7/18 -->
+Date: 11/25/18 -->
 <html>
     <head>
-        <title>Trade Haven - Sell History</title>
+        <title>Trade Haven - Sell Transaction Details</title>
         <?php include "../../pages/common/includes.html" ?>
     </head>
     <body>
@@ -17,7 +17,7 @@ Date: 11/7/18 -->
             <div class="row">
                 <div class="col-md-12">
                     <div id="sell-history-jumbotron" class="jumbotron">
-                        <h2>Sell History</h2>
+                        <h2>Sell Transaction Details</h2>
                         <table class="table table-bordered table-striped table-hover">
                             <thead>
                                 <tr>

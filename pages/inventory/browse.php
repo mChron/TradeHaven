@@ -45,7 +45,7 @@ Date: 11/7/18-->
                                                 <a href=\"#\" data-toggle='modal' data-target='#detailed-card-view-modal'>
                                                     <img class=\"detailed-view clickable\" src=\"images/glyphicons/glyphicons-28-search.png\" data-toggle='tooltip' data-placement='top' title='Detailed View'/>
                                                 </a>
-                                                <a href=\"https://api.scryfall.com/cards/named?exact={$row[1]}&format=image&version=normal\">
+                                                <a target='_blank' href=\"https://api.scryfall.com/cards/named?exact={$row[1]}&format=image&version=normal\">
                                                     <img class=\"card-image\" src=\"images/glyphicons/glyphicons-12-camera.png\" data-toggle='tooltip' data-placement='top' title='Card Image' />
                                                 </a>
                                             </td>

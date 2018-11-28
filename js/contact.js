@@ -3,6 +3,9 @@ Author: Marcus Chronabery
 Date: 9/17/18 */
 $(function() {
     $("#contact-form").submit(validateContactForm);
+    if (getUrlParameter("success") === "true") {
+        $("#contact-modal").modal();
+    }
 });
 
 /*
@@ -20,9 +23,6 @@ function validateContactForm(e) {
     var email = $("#contact-email").val();
     toggleWarning("#contact-valid-email", email && !emailRegEx.test(email));
     if ($("#contact-form .validation-warning:visible")[0] === undefined) {
-        $("#contact-form")[0].reset();
-        $("#contact-modal").modal();
-        $("#contact-modal .modal-footer button").hide();
-//        $(this).unbind("submit").submit();
+        $(this).unbind("submit").submit();
     }
 }

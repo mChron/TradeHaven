@@ -179,6 +179,13 @@ function toggleWarningById(id, truth) {
     }
 }
 
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
 /*
  * Look for all fields that are mark validatable and add a warning label after the element.
  * The message is generated from the name of the validatable element, as is the id.
@@ -339,7 +346,8 @@ function initializeNumSpinner() {
     $(numSpinner).append(subtract);
     
     var subBtn = document.createElement("button");
-    $(subBtn).addClass("btn btn-default");
+    $(subBtn).addClass("btn btn-custom");
+    $(subBtn).attr("type", "button");
     $(subBtn).attr("data-dir", "dwn");
     $(subtract).append(subBtn);
     $(subBtn).click(function() {
@@ -371,6 +379,7 @@ function initializeNumSpinner() {
     
     var addBtn = document.createElement("button");
     $(addBtn).addClass("btn btn-default");
+    $(addBtn).attr("type", "button");
     $(addBtn).attr("data-dir", "up");
     $(add).append(addBtn);
     $(addBtn).click(function() {

@@ -54,13 +54,14 @@ Date: 11/7/18 -->
             </li>
             <?php 
                 if ($loggedIn) {
-                    echo 
-                    '<li class="nav-item">
-                        <a class="nav-link" href="pages/user/cart.php">My Cart</a>
-                    </li>';
-                    echo 
-                    '<li class="nav-item">
-                        <a class="nav-link" href="pages/user/my_account.php">My Account</a>
+                    echo
+                    '<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdownLink" data-toggle="dropdown">User</a>
+                        <div class="dropdown-menu" aria-labelledby="userDropdownLink">
+                            <a class="dropdown-item" href="pages/user/cart.php">My Cart</a>
+                            <a class="dropdown-item" href="pages/user/my_account.php">My Account</a>
+                            <a class="dropdown-item" href="pages/user/browse_users.php">Browse Users</a>
+                        </div>
                     </li>';
                 }
                 echo '<li class="nav-item"><button type="button" class="btn btn-primary';
