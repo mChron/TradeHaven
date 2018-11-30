@@ -26,6 +26,7 @@ if ($numRecords == 1)
         $_SESSION['customer_id'] = $row['user_id'];
         $_SESSION['customer_first_name'] = $row['first_name'];
         $_SESSION['customer_last_name'] = $row['last_name'];
+        $_SESSION['cart_id'] = mysqli_fetch_array(mysqli_query($mysqli, "select cart_id from cart_user where user_id = {$_SESSION['customer_id']}"))['cart_id'];
         $productID = $_SESSION['purchasePending'];
         if ($productID != "")
         {

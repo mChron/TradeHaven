@@ -1,0 +1,26 @@
+/* Filename: browse.css
+Author: Marcus Chronabery
+Date: 11/28/18 */
+.card-image, .detailed-view {
+    margin-left: 10px;
+}
+
+#checkout-submit, .card-image, .detailed-view {
+    float: right;
+}
+
+#checkout-submit {
+    margin-right: 10px;
+}
+
+.total-cell {
+    border-top: solid 2px black;
+}
+
+#remove-card-name {
+    display: inline;
+}
+
+#cart-remove-success, #cart-remove-failure {
+    position: fixed;
+}

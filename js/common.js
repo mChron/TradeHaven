@@ -1,7 +1,7 @@
 /* Filename: common.js
 Author: Marcus Chronabery
 Date: 9/17/18 */
-var numSpinner;
+var DEFAULT_NUM_SPIN_MAX = 10;
 
 $(function() {
     $("#login-form").submit(validateLoginForm);
@@ -10,10 +10,7 @@ $(function() {
     //set jumbotron minimum height to fill space between header and footer
     $(".jumbotron").css("min-height", window.innerHeight - $("#footer").height() - $("#header").height());
     $(".jumbotron").css("min-width", window.innerWidth);
-    $(".number-spinner button").on("click", function(e) {
-        updateNumberSpinnerValue($(this));
-    });
-    $(".number-spinner input")
+    $(".spinner-input")
     .on("paste", function(e) {
         $(this).change();
     })
@@ -23,7 +20,6 @@ $(function() {
     .on("keypress", function(e) {
         blockNonNumericKeypress(e);
     });
-    initializeNumSpinner();
     $(".remove-row").click(removeRow);
     checkForHash();
     $(window).on("hashChange", function(e) {
@@ -94,10 +90,18 @@ function checkForHash() {
  * Ensure the value in the provided input field was numeric, if not default to 1.
  * @param {type} input The input field to validate the value on.
  */
-function ensureNumeric(input) {
+function ensureNumeric(input, max) {
     var parsed = parseInt($(input).val());
     if (!isNaN(parsed)) {
-        $(input).val(parsed);
+        if (parsed > max) {
+            $(input).val(max);
+        }
+        else if (parsed < 1) {
+            $(input).val(1);
+        }
+        else {
+            $(input).val(parsed);
+        }
     }
     else {
         $(input).val(1);
@@ -314,36 +318,42 @@ function titleCaseMulti(s) {
  * 10 and minimum of 1.
  * @param {type} btn The number spinner button pressed.
  */
-function updateNumberSpinnerValue(btn) {
-    var oldValue = $(btn).closest(".number-spinner").find("input").val().trim();
+function updateNumberSpinnerValue(btn, max) {
+    var oldValue = new Number($(btn).closest(".number-spinner").find(".spinner-input").val().trim()).valueOf();
     var newVal = 0;
     if ($(btn).attr("data-dir") === "up") {
-        if (oldValue >= 10) {
-            newVal = 10;
+        if (oldValue >= max) {
+            console.log("over max");
+            console.log(oldValue);
+            console.log(max);
+            newVal = max;
         }
         else {
+            console.log("bump");
             newVal = parseInt(oldValue) + 1;
         }
     }
     else if (oldValue > 1) {
+        console.log("old > 1")
         newVal = parseInt(oldValue) - 1;
     } 
     else {
+        console.log("default to 1")
         newVal = 1;
     }
-    $(btn).closest(".number-spinner").find("input").val(newVal);
+    $(btn).closest(".number-spinner").find(".spinner-input").val(newVal);
 }
 
 /**
  * Initialize the base number spinner object.
  */
-function initializeNumSpinner() {
-    numSpinner = document.createElement("div");
-    $(numSpinner).addClass("input-group number-spinner");
+function initializeNumSpinner(max) {
+    let spinner = document.createElement("div");
+    $(spinner).addClass("input-group number-spinner");
     
     var subtract = document.createElement("span");
     $(subtract).addClass("input-group-btn");
-    $(numSpinner).append(subtract);
+    $(spinner).append(subtract);
     
     var subBtn = document.createElement("button");
     $(subBtn).addClass("btn btn-custom");
@@ -351,7 +361,7 @@ function initializeNumSpinner() {
     $(subBtn).attr("data-dir", "dwn");
     $(subtract).append(subBtn);
     $(subBtn).click(function() {
-        updateNumberSpinnerValue($(this));
+        updateNumberSpinnerValue($(this), max);
     });
     
     var subImg = document.createElement("img");
@@ -360,14 +370,14 @@ function initializeNumSpinner() {
     
     var input = document.createElement("input");
     $(input).prop("type", "text");
-    $(input).addClass("form-control text-center");
+    $(input).addClass("form-control text-center spinner-input");
     $(input).val(1);
-    $(numSpinner).append(input);
+    $(spinner).append(input);
     $(input).on("paste", function(e) {
         $(input).change();
     })
     .on("change", function(e) {
-        ensureNumeric(input);
+        ensureNumeric(input, max);
     })
     .on("keypress", function(e) {
         blockNonNumericKeypress(e);
@@ -375,7 +385,7 @@ function initializeNumSpinner() {
     
     var add = document.createElement("span");
     $(add).addClass("input-group-btn");
-    $(numSpinner).append(add);
+    $(spinner).append(add);
     
     var addBtn = document.createElement("button");
     $(addBtn).addClass("btn btn-default");
@@ -383,20 +393,21 @@ function initializeNumSpinner() {
     $(addBtn).attr("data-dir", "up");
     $(add).append(addBtn);
     $(addBtn).click(function() {
-        updateNumberSpinnerValue($(this));
+        updateNumberSpinnerValue($(this), max);
     });
     
     var addImg = document.createElement("img");
     $(addImg).prop("src", "images/glyphicons/glyphicons-433-plus.png");
     $(addBtn).append(addImg);
+    return spinner;
 }
 
 /**
  * Get a new instance of a number spinner with the listeners also copied.
  * @returns {object} A deep clone of the number spinner
  */
-function getNewNumberSpinner() {
-    return $(numSpinner).clone(true);
+function getNewNumberSpinner(max) {
+    return initializeNumSpinner(max);
 }
 
 /**

@@ -6,12 +6,15 @@ Date: 11/7/18 -->
     <head>
         <title>Trade Haven - Sell History</title>
         <?php include "../../pages/common/includes.html" ?>
+        <script src="js/sell_history.js"></script>
+        <link href="css/transaction_history.css" rel="stylesheet">
     </head>
     <body>
         <?php
             include "../../pages/common/header.php";
             include "../../pages/common/login_modal.php";
             include "../../pages/common/footer.php";
+            include "../../pages/inventory/transaction_details_modal.php";
         ?>
         <div class="container-fluid">
             <div class="row">
@@ -35,7 +38,7 @@ Date: 11/7/18 -->
                                             $row = mysqli_fetch_array($result);
                                             while ($row != null) {
                                                 print "<tr>
-                                                    <td class='sale-id'>{$row[0]}</td>
+                                                    <td class='sale-id clickable transaction-view'><span class='transaction-id'>{$row[0]}</span></td>
                                                     <td class='sale-date'>{$row[1]}</td>
                                                     </tr>";
                                                 $row = mysqli_fetch_array($result);

@@ -6,23 +6,48 @@ Date: 11/7/18 -->
     <head>
         <title>Trade Haven - Purchase History</title>
         <?php include "../../pages/common/includes.html" ?>
+        <script src="js/purchase_history.js"></script>
+        <link href="css/transaction_history.css" rel="stylesheet">
     </head>
     <body>
-        <?php include "../../pages/common/header.php" ?>
-        <?php include "../../pages/common/login_modal.php"?>
-        <?php include "../../pages/common/footer.php" ?>
+        <?php 
+            include "../../pages/common/header.php";
+            include "../../pages/common/login_modal.php";
+            include "../../pages/common/footer.php";
+            include "../../pages/inventory/transaction_details_modal.php";
+        ?>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div id="purchase-history-jumbotron" class="jumbotron">
                         <h2>Purchase History</h2>
-                        <p>
-                            <img src="images/traffic-cone.png" alt="construction" width="30" height="30">
-                            This part of the site is still under construction!
-                            <img src="images/traffic-cone.png" alt="construction" width="30" height="30">
-                            <br />
-                            This page will allow a user to view a list of purchase transactions.
-                        </p>
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Purchase Transaction ID</th>
+                                    <th>Transaction Date/Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    include "../../../db_connect.php";
+                                    $loggedIn = isset($_SESSION['customer_id']);
+                                    if ($loggedIn) {
+                                        $result = mysqli_query($mysqli, "select purchase_id, transaction_date from user_purchase_relation where user_id = {$_SESSION['customer_id']}");
+                                        if ($result) {
+                                            $row = mysqli_fetch_array($result);
+                                            while ($row != null) {
+                                                print "<tr>
+                                                    <td class='purchase-id clickable transaction-view'><span class='transaction-id'>{$row[0]}</span></td>
+                                                    <td class='purchase-date'>{$row[1]}</td>
+                                                    </tr>";
+                                                $row = mysqli_fetch_array($result);
+                                            }
+                                        }
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

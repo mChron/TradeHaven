@@ -10,3 +10,7 @@ Date: 9/22/18 */
     float: right;
     margin-left: 10px;
 }
+
+#cart-add-success, #cart-add-failure {
+    position: fixed;
+}

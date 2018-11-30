@@ -1,0 +1,12 @@
+/* 
+* file: purchase_history.css
+* created: 11/29/18
+* author: Marcus Chronabery
+*/
+#transaction-details-modal .modal-body, #transaction-details-modal .modal-content {
+    width: 600px;
+}
+
+#transaction-details-modal .modal-dialog {
+    transform: translateX(-50px);
+}

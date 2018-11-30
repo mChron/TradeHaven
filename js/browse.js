@@ -11,6 +11,41 @@ $(function() {
             }
         });
     });
+    $("#card-num-spinner").addClass("submit-card-quantity");
+    $(".add-to-cart").click(function() {
+        let row = $(this).parents("tr");
+        $("#submit-card-id").val($(row).find(".card-id").html());
+        $("#card-num-spinner").html(getNewNumberSpinner(new Number($(row).find(".card-quantity").html()).valueOf()));
+        $("#submit-card-name").html($(row).find(".name").html());
+        $("#add-to-cart-modal").modal();
+    });
+    $("#submit-add-to-cart").click(function() {
+        $("#add-to-cart-modal").modal("hide");
+        $.ajax({
+            url: "php/add_to_cart.php",
+            method: "POST",
+            data: {
+                "card-id": $("#submit-card-id").val(),
+                "card-quantity": $("#card-num-spinner .spinner-input").val()
+            },
+            success: function(result) {
+                if (!result) {
+                    $("#cart-add-success").removeClass("hidden");
+                    // css, timeout, callback
+                    // display message for 2 seconds then fade out over 2 seconds
+                    setTimeout(function() {
+                        $("#cart-add-success").animate({opacity: "0"}, 2000, function() {
+                            $("#cart-add-success").addClass("hidden");
+                            $("#cart-add-success").animate({opacity: "100"});
+                        });
+                    }, 2000);
+                }
+                else {
+                    $("#cart-add-failure").removeClass("hidden");
+                }
+            }
+        });
+    });
 });
 
 /**

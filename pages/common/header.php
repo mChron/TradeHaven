@@ -58,9 +58,9 @@ Date: 11/7/18 -->
                     '<li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdownLink" data-toggle="dropdown">User</a>
                         <div class="dropdown-menu" aria-labelledby="userDropdownLink">
-                            <a class="dropdown-item" href="pages/user/cart.php">My Cart</a>
-                            <a class="dropdown-item" href="pages/user/my_account.php">My Account</a>
-                            <a class="dropdown-item" href="pages/user/browse_users.php">Browse Users</a>
+                            <a class="dropdown-item" href="pages/user/cart.php"><img class="menu-glyph" src="images/open-chest.png" height="30" width="30"/>My Cart</a>
+                            <a class="dropdown-item" href="pages/user/my_account.php"><img class="menu-glyph" src="images/glyphicons/glyphicons-138-cogwheels.png" />My Account</a>
+                            <a class="dropdown-item" href="pages/user/browse_users.php"><img class="menu-glyph" src="images/glyphicons/glyphicons-44-group.png" /> Browse Users</a>
                         </div>
                     </li>';
                 }

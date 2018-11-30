@@ -78,7 +78,7 @@ function addNewRow(index) {
     $(tr).append(condition);
     $(condition).find("select").attr("name", "card-condition[" + index + "]");
     var numSpinner = document.createElement("td");
-    $(numSpinner).append(getNewNumberSpinner());
+    $(numSpinner).append(getNewNumberSpinner(DEFAULT_NUM_SPIN_MAX));
     $(tr).append(numSpinner);
     var price = document.createElement("td");
     $(price).addClass("estimated-price");

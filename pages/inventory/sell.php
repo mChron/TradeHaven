@@ -38,12 +38,12 @@ Date: 11/7/18 -->
                                 <tfoot>
                                     <tr>
                                         <td colspan="4">
-                                            <span id="add-sell-card" class="btn btn-secondary button-custom">
+                                            <span id="add-sell-card" class="btn btn-light button-custom">
                                                 <img src="images/stack.png" height="40" width="40" />Add Cards
                                             </span>
                                         </td>
                                         <td>
-                                            <span id="remove-all-cards" class="btn btn-secondary button-custom">
+                                            <span id="remove-all-cards" class="btn btn-light button-custom">
                                                 <img height="40" width="40" src="images/card-burn.png" />Remove All
                                             </span>
                                         </td>

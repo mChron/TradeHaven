@@ -14,11 +14,18 @@ Date: 11/7/18-->
             include "../../pages/common/header.php";
             include "../../pages/common/login_modal.php";
             include "../../pages/common/footer.php";
+            include "../../pages/inventory/add_to_cart_modal.php";
             include "detailed_card_view.php" ?>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div id="browse-jumbotron" class="jumbotron">
+                        <div id="cart-add-success" class="hidden alert alert-success">
+                            Your card(s) have successfully been added to your cart.
+                        </div>
+                        <div id="cart-add-failure" class="hidden alert alert-success">
+                            Your card(s) could not be added to your cart.
+                        </div>
                         <h2>Buy Inventory</h2>
                         <table class="table table-bordered table-striped table-hover">
                             <thead>
@@ -41,7 +48,7 @@ Date: 11/7/18-->
                                         print "<tr>
                                             <td class=\"card-id hidden\">{$row[0]}</td>
                                             <td class=\"card-name\" colspan=\"1\">
-                                                {$row[1]}
+                                                <span class='name'>{$row[1]}</span>
                                                 <a href=\"#\" data-toggle='modal' data-target='#detailed-card-view-modal'>
                                                     <img class=\"detailed-view clickable\" src=\"images/glyphicons/glyphicons-28-search.png\" data-toggle='tooltip' data-placement='top' title='Detailed View'/>
                                                 </a>
@@ -55,7 +62,7 @@ Date: 11/7/18-->
                                             <td class=\"card-quantity\" colspan=\"1\">$row[5]</td>
                                             <td class=\"card-price\" colspan=\"1\">$$row[6]</td>";
                                         if ($loggedIn) {
-                                            print '<td class="btn-column" colspan="1"><img class="clickable" src="images/open-chest.png" height="30" width="30" data-placement="left" data-toggle="tooltip" title="Add To Cart" /></td>';
+                                            print '<td class="btn-column" colspan="1"><img class="clickable add-to-cart" src="images/open-chest.png" height="30" width="30" data-placement="left" data-toggle="tooltip" title="Add To Cart" /></td>';
                                         }
                                         print '</tr>';
                                         $row = mysqli_fetch_array($result);
