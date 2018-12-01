@@ -21,7 +21,7 @@ Date: 11/7/18 -->
                 <div class="col-md-12">
                     <div id="sell-history-jumbotron" class="jumbotron">
                         <h2>Sell History</h2>
-                        <table class="table table-bordered table-striped table-hover">
+                        <table id="sell-history-table" class="table table-bordered table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th>Sale Transaction ID</th>
@@ -38,7 +38,7 @@ Date: 11/7/18 -->
                                             $row = mysqli_fetch_array($result);
                                             while ($row != null) {
                                                 print "<tr>
-                                                    <td class='sale-id clickable transaction-view'><span class='transaction-id'>{$row[0]}</span></td>
+                                                    <td class='sale-id clickable transaction-view'><span class='transaction-id'>{$row[0]}</span><img class='detailed-view' src=\"images/glyphicons/glyphicons-28-search.png\" data-toggle='tooltip' data-placement='top' title='Detailed View'/></td>
                                                     <td class='sale-date'>{$row[1]}</td>
                                                     </tr>";
                                                 $row = mysqli_fetch_array($result);
@@ -53,4 +53,7 @@ Date: 11/7/18 -->
             </div>
         </div>
     </body>
+    <script type="text/javascript">
+        initializeTooltips();
+    </script>
 </html>

@@ -19,8 +19,8 @@ Date: 11/7/18 -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="pages/tools/tools.php" id="navbarToolsDropdownLink" data-toggle="dropdown">Game Tools</a>
                 <div class="dropdown-menu" aria-labelledby="navbarToolsDropdownLink">
-                    <a class="dropdown-item" href="pages/tools/dice_roller.php">Dice Roller</a>
-                    <a class="dropdown-item" href="pages/tools/life_counter.php">Life Counter</a>
+                    <a class="dropdown-item" href="pages/tools/dice_roller.php"><img class="menu-glyph" src="images/rolling-dices.png" width="30" height="30"/>Dice Roller</a>
+                    <a class="dropdown-item" href="pages/tools/life_counter.php"><img class="menu-glyph" src="images/life-bar.png" width="30" height="30"/>Life Counter</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -29,21 +29,21 @@ Date: 11/7/18 -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarBusinessDropdownLink" data-toggle="dropdown">Business</a>
                 <div class="dropdown-menu" aria-labelledby="navbarBusinessDropdownLink">
-                    <a class="dropdown-item" href="pages/info/about.php">About Us</a>
-                    <a class="dropdown-item" href="pages/business/contact.php">Contact Us</a>
+                    <a class="dropdown-item" href="pages/info/about.php"><img class="menu-glyph" src="images/glyphicons/glyphicons-195-question-sign.png"/>About Us</a>
+                    <a class="dropdown-item" href="pages/business/contact.php"><img class="menu-glyph" src="images/glyphicons/glyphicons-246-chat.png"/>Contact Us</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="pages/inventory/browse.php" id="navbarInventoryDropdownLink" data-toggle="dropdown">Inventory</a>
                 <div class="dropdown-menu" aria-labelledby="navbarInventoryDropdownLink">
-                    <a class="dropdown-item" href="pages/inventory/browse.php">Buy</a>
+                    <a class="dropdown-item" href="pages/inventory/browse.php"><img class="menu-glyph" src="images/card-pick.png" width="30" height="30"/>Buy</a>
                     <?php
                         session_start();
                         $loggedIn = isset($_SESSION['customer_id']);
                         if ($loggedIn) {
                             echo '
-                            <a class="dropdown-item" href="pages/inventory/sell.php">Sell</a>
-                            <a class="dropdown-item" href="pages/inventory/trade.php">Trade</a>
+                            <a class="dropdown-item" href="pages/inventory/sell.php"><img class="menu-glyph" src="images/two-coins.png" width="30" height="30"/>Sell</a>
+                            <a class="dropdown-item" href="pages/inventory/trade.php"><img class="menu-glyph" src="images/card-exchange.png" width="30" height="30"/>Trade</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="pages/inventory/purchase_history.php">Purchase History</a>
                             <a class="dropdown-item" href="pages/inventory/sell_history.php">Sell History</a>

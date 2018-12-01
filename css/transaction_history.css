@@ -3,10 +3,14 @@
 * created: 11/29/18
 * author: Marcus Chronabery
 */
-#transaction-details-modal .modal-body, #transaction-details-modal .modal-content {
+#transaction-details-modal .modal-body, #transaction-details-modal .modal-content, #purchase-history-table, #sell-history-table {
     width: 600px;
 }
 
 #transaction-details-modal .modal-dialog {
     transform: translateX(-50px);
+}
+
+.detailed-view {
+    float: right;
 }

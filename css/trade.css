@@ -1,0 +1,10 @@
+/* 
+* file: trade.css
+* date: 11/30/18
+* author: Marcus Chronabery
+*/
+
+.status-column {
+    border-radius: 10px;
+    border: double 4px grey;
+}

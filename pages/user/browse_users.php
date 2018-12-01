@@ -43,7 +43,7 @@ Date: 11/7/18-->
                             <tbody>
                                 <?php
                                     include "../../../db_connect.php";
-                                    $result = mysqli_query($mysqli, "SELECT user_id, CONCAT(first_name, ' ', LEFT(last_name, 1), '.') as name, signup_date FROM `users` order by 2 asc;");
+                                    $result = mysqli_query($mysqli, "SELECT user_id, CONCAT(first_name, ' ', LEFT(last_name, 1), '.') as name, signup_date FROM `users` where user_id != {$_SESSION['customer_id']} order by 2 asc;");
                                     $row = mysqli_fetch_array($result);
                                     while ($row != null) {
                                         print "<tr>
