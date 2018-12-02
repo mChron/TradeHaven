@@ -8,3 +8,39 @@
     border-radius: 10px;
     border: double 4px grey;
 }
+
+th.condensed {
+    padding: 0.35rem;
+}
+
+div.nested {
+    max-height: 80px;
+    min-height: 80px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.row {
+    max-height: 170px;
+    min-height: 170px;
+}
+
+.id-header {
+    width: 55px;
+}
+
+table {
+    table-layout: fixed;
+}
+
+.header-table {
+    margin-bottom: 0px;
+}
+
+.status-column {
+    overflow-y: hidden;
+}
+
+.status-column table tbody tr td, .status-column table thead tr td {
+    padding: 0.35rem;
+}
