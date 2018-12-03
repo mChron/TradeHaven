@@ -32,10 +32,9 @@ Date: 11/7/18 -->
                                 <ul>
                                     <li><a id="sitemap-buy" href="pages/inventory/browse.php">Buy</a></li>
                                     <li><a id="sitemap-sell" href="pages/inventory/sell.php">Sell</a></li>
-                                    <li><a id="sitemap-trade" href="pages/inventory/trade.php">Trade</a></li>
+                                    <li><a id="sitemap-trade" href="pages/inventory/trade.php">Trade Status</a></li>
                                     <li><a id="sitemap-buy-history" href="pages/inventory/purchase_history.php">Purchase History</a></li>
                                     <li><a id="sitemap-sell-history" href="pages/inventory/sell_history.php">Sell History</a></li>
-                                    <li><a id="sitemap-trade-history" href="pages/inventory/trade_history.php">Trade History</a></li>
                                 </ul>
                             </li>
                             <li><a id="sitemap-cart" href="pages/user/cart.php">My Cart</a></li>

@@ -4,7 +4,7 @@ Author: Marcus Chronabery
 Date: 11/7/18 -->
 <html>
     <head>
-        <title>Trade Haven - Trade</title>
+        <title>Trade Haven - Trade Status</title>
         <?php include "../../pages/common/includes.html" ?>
         <link href="css/trade.css" rel="stylesheet"/>
     </head>

@@ -6,8 +6,6 @@ Date: 11/7/18-->
     <head>
         <title>Trade Haven - Browse Users</title>
         <?php include "../../pages/common/includes.html" ?>
-        <link href="css/browse.css" rel="stylesheet">
-        <script src="js/browse.js"></script>
     </head>
     <body>
         <?php 
