@@ -20,6 +20,11 @@ div.nested {
     overflow-x: hidden;
 }
 
+.status-desc {
+    margin-top: -5px;
+    margin-left: 10px;
+}
+
 .row {
     max-height: 170px;
     min-height: 170px;

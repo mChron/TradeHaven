@@ -43,11 +43,10 @@ Date: 11/7/18 -->
                         if ($loggedIn) {
                             echo '
                             <a class="dropdown-item" href="pages/inventory/sell.php"><img class="menu-glyph" src="images/two-coins.png" width="30" height="30"/>Sell</a>
-                            <a class="dropdown-item" href="pages/inventory/trade.php"><img class="menu-glyph" src="images/card-exchange.png" width="30" height="30"/>Trade</a>
+                            <a class="dropdown-item" href="pages/inventory/trade.php"><img class="menu-glyph" src="images/card-exchange.png" width="30" height="30"/>Trade Status</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="pages/inventory/purchase_history.php">Purchase History</a>
-                            <a class="dropdown-item" href="pages/inventory/sell_history.php">Sell History</a>
-                            <a class="dropdown-item" href="pages/inventory/trade_history.php">Trade History</a>';
+                            <a class="dropdown-item" href="pages/inventory/sell_history.php">Sell History</a>';
                         }
                     ?>
                 </div>

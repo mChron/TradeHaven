@@ -26,9 +26,22 @@ reset button for the form and populate with a specific user's information. -->
                 . '$("#login-form").remove();'
                 . '$("#login-err").removeClass("d-none");'
                 . '$("#login-err").html("You are not logged in! Returning home.");'
+                . '$("#login-modal .modal-footer").remove();'
                 . '$("#login-modal").modal("show");'
                 . 'setTimeout(function() {location.href="index.php";}, 3000);'
                 . '});</script>';
+                // initialize all user information to avoid displaying any errors.
+                $userRow = [];
+                $userRow['user_id'] = '';
+                $userRow['first_name'] = '';
+                $userRow['last_name'] = '';
+                $userRow['email'] = '';
+                $userRow['phone_number'] = '';
+                $addressElements = ['house', 'street', 'city', 'state', 'zip'];
+                foreach ($addressElements as $key => $value) {
+                    $userRow['ship_'.$value] = '';
+                    $userRow['bill_'.$value] = '';
+                }
             }
             else {
                 $userQuery = "select * from user_detailed_view where user_id = {$_SESSION['customer_id']}";

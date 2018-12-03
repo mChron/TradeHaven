@@ -7,39 +7,31 @@ the user is presented with an error.
 */
 include "../../db_connect.php";
 session_start();
-if (isset($_SESSION['customer_id'])) {
-    header("Location: ../pages/inventory/browse.php");
-}
 $rowsWithMatchingLoginName = mysqli_query($mysqli, "SELECT * FROM users WHERE email = '$_POST[logEmail]'");
 $numRecords = mysqli_num_rows($rowsWithMatchingLoginName);
 if ($numRecords == 0)
 {
     //No records were retrieved, so ...
-//    header("Location: ../pages/no_records");
-    echo "OH DEAR";
+    header("Location: ../index.php?invalid=true");
 }
 if ($numRecords == 1)
 {
     $row = mysqli_fetch_array($rowsWithMatchingLoginName);
-    if ($_POST[logPassword] == $row['password'])
+    if ($_POST['logPassword'] == $row['password'])
     {
         $_SESSION['customer_id'] = $row['user_id'];
         $_SESSION['customer_first_name'] = $row['first_name'];
         $_SESSION['customer_last_name'] = $row['last_name'];
         $_SESSION['cart_id'] = mysqli_fetch_array(mysqli_query($mysqli, "select cart_id from cart_user where user_id = {$_SESSION['customer_id']}"))['cart_id'];
-        $productID = $_SESSION['purchasePending'];
-        if ($productID != "")
-        {
-            unset($_SESSION['purchasePending']);
-            $destination =
-                "../pages/shoppingCart.php?productID=$productID";
-            $goto  = "Location: $destination";
+        $referer = getenv("HTTP_REFERER");
+        $queryPosition = strpos($referer, '?');
+        if ($queryPosition != null) {
+            $destination = substr($referer, 0, $queryPosition);        
         }
-        else
-        {
-            $destination = getenv('HTTP_REFERER'); 
-            $goto  = "Location: ".$destination;
+        else {
+            $destination = $referer;
         }
+        $goto  = "Location: ".$destination;
         header($goto);
     }
     else

@@ -22,6 +22,7 @@ Date: 11/7/18-->
                 . '$("#login-form").remove();'
                 . '$("#login-err").removeClass("d-none");'
                 . '$("#login-err").html("You are not logged in! Returning home.");'
+                . '$("#login-modal .modal-footer").remove();'
                 . '$("#login-modal").modal("show");'
                 . 'setTimeout(function() {location.href="index.php";}, 3000);'
                 . '});</script>';

@@ -16,6 +16,19 @@ Date: 11/7/18 -->
             include "../../pages/inventory/sell_cards_feedback_modal.php";
             include "../../pages/common/footer.php";
             include "../../pages/inventory/sell_cards_edit_modal.php";
+            // session started in header, simply reference it here
+            $loggedIn = isset($_SESSION['customer_id']);
+            if (!$loggedIn) {
+                echo '<script type="text/javascript">$(function() {'
+                . '$("button").attr("disabled", "disabled");'
+                . '$("#login-form").remove();'
+                . '$("#login-err").removeClass("d-none");'
+                . '$("#login-err").html("You are not logged in! Returning home.");'
+                . '$("#login-modal .modal-footer").remove();'
+                . '$("#login-modal").modal("show");'
+                . 'setTimeout(function() {location.href="index.php";}, 3000);'
+                . '});</script>';
+            }
         ?>
         <div class="container-fluid">
             <div class="row">

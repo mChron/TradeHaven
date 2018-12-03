@@ -55,6 +55,10 @@ $(function() {
             });
         }
     });
+    if (getUrlParameter("invalid")) {
+        $("#login-err").removeClass("d-none");
+        $("#login-modal").modal();
+    }
 });
 
 function getAltLink(cardName) {
